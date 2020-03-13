@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="mainBorderPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <left>
+      <HBox BorderPane.alignment="TOP_LEFT">
+         <children>
+            <ScrollPane fitToHeight="true" fitToWidth="true" HBox.hgrow="ALWAYS">
+              <content>
+                <AnchorPane>
+                     <children>
+                        <VBox alignment="TOP_CENTER" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Label text="Initially Configuring" />
+                              <Button mnemonicParsing="false" onAction="#onMainInitiallyConfig" text="ABRIR" />
+                              <Separator prefWidth="200.0" />
+                              <Label text="Remove default" />
+                              <Label text="configuration" />
+                              <Button mnemonicParsing="false" onAction="#onMainRmvDefaultConfig" text="ABRIR" />
+                              <Separator prefWidth="200.0" />
+                              <Label text="Configure Basic Data" />
+                              <Button mnemonicParsing="false" onAction="#onMainConfigBasicData" text="ABRIR" />
+                              <Separator prefWidth="200.0" />
+                              <Label text="Configure Device Data" />
+                              <Button mnemonicParsing="false" onAction="#onMainConfigDeviceData" text="ABRIR" />
+                              <Separator prefWidth="200.0" />
+                              <Label text="Configure" />
+                              <Label text="Transmission Data" />
+                              <Button mnemonicParsing="false" onAction="#onMainConfigTransmissionData" text="ABRIR" />
+                              <Separator prefWidth="200.0" />
+                              <Label text="Configure Radio Data" />
+                              <Button mnemonicParsing="false" onAction="#onMainConfigRadioData" text="ABRIR" />
+                              <Separator prefWidth="200.0" />
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+            <Separator orientation="VERTICAL" prefHeight="200.0" />
+         </children>
+      </HBox>
+   </left>
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#onExportScript" text="Export" />
+                  <MenuItem mnemonicParsing="false" onAction="#onCloseMainWindow" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#onHelpMainWindow" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+</BorderPane>
