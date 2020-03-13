@@ -1,11 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" >
-   <children>
-      <Label text="InitiallyConfig" />
-   </children>
-</AnchorPane>
+<ScrollPane fitToHeight="true" fitToWidth="true" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+  <content>
+    <AnchorPane>
+         <children>
+            <VBox alignment="TOP_CENTER" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <children>
+                  <Label text="Initially Config" />
+                  <Label text="Table 1: eNodeB Configuration Data" />
+                  <HBox spacing="10.0">
+                     <children>
+                        <MenuButton minWidth="-Infinity" mnemonicParsing="false" prefWidth="103.0" text="Opciones">
+                          <items>
+                            <MenuItem mnemonicParsing="false" onAction="#onAddTableInitOne" text="Agregar" />
+                            <MenuItem mnemonicParsing="false" onAction="#onUpdateTableInitOne" text="Actualizar" />
+                              <MenuItem mnemonicParsing="false" onAction="#onDeleteTableInitOne" text="Eliminar" />
+                              <MenuItem mnemonicParsing="false" onAction="#onDuplicateTableInitOne" text="Duplicar" />
+                          </items>
+                        </MenuButton>
+                        <ScrollPane fitToHeight="true" minHeight="-Infinity" prefHeight="150.0" HBox.hgrow="ALWAYS">
+                          <content>
+                            <AnchorPane>
+                                 <children>
+                                    <TableView fx:id="tableInitConfigOne" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </ScrollPane>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </HBox>
+                  <Label text="Table 2 IP addresses of eNodeB-related NEs" />
+                  <HBox spacing="10.0">
+                     <children>
+                        <MenuButton minWidth="-Infinity" mnemonicParsing="false" prefWidth="103.0" text="Opciones">
+                           <items>
+                              <MenuItem mnemonicParsing="false" onAction="#onAddTableInitTwo" text="Agregar" />
+                              <MenuItem mnemonicParsing="false" onAction="#onUpdateTableInitTwo" text="Actualizar" />
+                              <MenuItem mnemonicParsing="false" onAction="#onDeleteTableInitTwo" text="Eliminar" />
+                              <MenuItem mnemonicParsing="false" onAction="#onDuplicateTableInitTwo" text="Duplicar" />
+                           </items>
+                        </MenuButton>
+                        <ScrollPane fitToHeight="true" minHeight="-Infinity" prefHeight="150.0">
+                           <content>
+                              <AnchorPane>
+                                 <children>
+                                    <TableView fx:id="tableInitConfigTwo" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </ScrollPane>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </HBox>
+                  <Label text="Table 3: Radio parameters" />
+                  <HBox spacing="10.0">
+                     <children>
+                        <MenuButton minWidth="-Infinity" mnemonicParsing="false" prefWidth="103.0" text="Opciones">
+                           <items>
+                              <MenuItem mnemonicParsing="false" onAction="#onAddTableInitThree" text="Agregar" />
+                              <MenuItem mnemonicParsing="false" onAction="#onUpdateTableInitThree" text="Actualizar" />
+                              <MenuItem mnemonicParsing="false" onAction="#onDeleteTableInitThree" text="Eliminar" />
+                              <MenuItem mnemonicParsing="false" onAction="#onDuplicateTableInitThree" text="Duplicar" />
+                           </items>
+                        </MenuButton>
+                        <ScrollPane fitToHeight="true" minHeight="-Infinity" prefHeight="150.0">
+                           <content>
+                              <AnchorPane>
+                                 <children>
+                                    <TableView fx:id="tableInitConfigThree" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </ScrollPane>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </VBox>
+         </children></AnchorPane>
+  </content>
+</ScrollPane>
