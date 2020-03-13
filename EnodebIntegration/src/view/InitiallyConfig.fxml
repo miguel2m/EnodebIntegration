@@ -56,7 +56,7 @@
                               <MenuItem mnemonicParsing="false" onAction="#onDuplicateTableInitTwo" text="Duplicar" />
                            </items>
                         </MenuButton>
-                        <ScrollPane fitToHeight="true" minHeight="-Infinity" prefHeight="150.0">
+                        <ScrollPane fitToHeight="true" minHeight="-Infinity" prefHeight="150.0" HBox.hgrow="ALWAYS">
                            <content>
                               <AnchorPane>
                                  <children>
@@ -81,7 +81,7 @@
                               <MenuItem mnemonicParsing="false" onAction="#onDuplicateTableInitThree" text="Duplicar" />
                            </items>
                         </MenuButton>
-                        <ScrollPane fitToHeight="true" minHeight="-Infinity" prefHeight="150.0">
+                        <ScrollPane fitToHeight="true" minHeight="-Infinity" prefHeight="150.0" HBox.hgrow="ALWAYS">
                            <content>
                               <AnchorPane>
                                  <children>

@@ -13,12 +13,12 @@ import javafx.beans.property.SimpleStringProperty;
  * 
  */
 public class TableOneConfigEnodeb {
-    private final SimpleStringProperty neEnodeb;
-    private final SimpleStringProperty ethernetPortNumberEnodeb;
-    private final SimpleStringProperty interfaceIpAddEnodeb;
-    private final SimpleStringProperty maskEnodeb;
-    private final SimpleStringProperty nexthopIpAddEnodeb;
-    private final SimpleStringProperty nexthopVlanAddEnodeb;
+    private SimpleStringProperty neEnodeb;
+    private SimpleStringProperty ethernetPortNumberEnodeb;
+    private SimpleStringProperty interfaceIpAddEnodeb;
+    private SimpleStringProperty maskEnodeb;
+    private SimpleStringProperty nexthopIpAddEnodeb;
+    private SimpleStringProperty nexthopVlanAddEnodeb;
 
     public TableOneConfigEnodeb(SimpleStringProperty neEnodeb, SimpleStringProperty ethernetPortNumberEnodeb, SimpleStringProperty interfaceIpAddEnodeb, SimpleStringProperty maskEnodeb, SimpleStringProperty nexthopIpAddEnodeb, SimpleStringProperty nexthopVlanAddEnodeb) {
         this.neEnodeb = neEnodeb;
@@ -33,25 +33,51 @@ public class TableOneConfigEnodeb {
         return neEnodeb;
     }
 
+    public void setNeEnodeb(SimpleStringProperty neEnodeb) {
+        this.neEnodeb = neEnodeb;
+    }
+
     public SimpleStringProperty getEthernetPortNumberEnodeb() {
         return ethernetPortNumberEnodeb;
+    }
+
+    public void setEthernetPortNumberEnodeb(SimpleStringProperty ethernetPortNumberEnodeb) {
+        this.ethernetPortNumberEnodeb = ethernetPortNumberEnodeb;
     }
 
     public SimpleStringProperty getInterfaceIpAddEnodeb() {
         return interfaceIpAddEnodeb;
     }
 
+    public void setInterfaceIpAddEnodeb(SimpleStringProperty interfaceIpAddEnodeb) {
+        this.interfaceIpAddEnodeb = interfaceIpAddEnodeb;
+    }
+
     public SimpleStringProperty getMaskEnodeb() {
         return maskEnodeb;
+    }
+
+    public void setMaskEnodeb(SimpleStringProperty maskEnodeb) {
+        this.maskEnodeb = maskEnodeb;
     }
 
     public SimpleStringProperty getNexthopIpAddEnodeb() {
         return nexthopIpAddEnodeb;
     }
 
+    public void setNexthopIpAddEnodeb(SimpleStringProperty nexthopIpAddEnodeb) {
+        this.nexthopIpAddEnodeb = nexthopIpAddEnodeb;
+    }
+
     public SimpleStringProperty getNexthopVlanAddEnodeb() {
         return nexthopVlanAddEnodeb;
     }
+
+    public void setNexthopVlanAddEnodeb(SimpleStringProperty nexthopVlanAddEnodeb) {
+        this.nexthopVlanAddEnodeb = nexthopVlanAddEnodeb;
+    }
+
+
 
     @Override
     public String toString() {

@@ -14,6 +14,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.initiallyconfig.TableOneConfigEnodeb;
+import model.initiallyconfig.TableThreeConfigEnodeb;
+import model.initiallyconfig.TableTwoConfigEnodeb;
 import view.ViewFactory;
 
 /**
@@ -100,6 +102,7 @@ public class InitiallyConfigController extends BaseController implements Initial
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        //Table One init
         TableColumn neCol = new TableColumn("NE");
         neCol.setMinWidth(100);
         neCol.setCellValueFactory(
@@ -143,6 +146,124 @@ public class InitiallyConfigController extends BaseController implements Initial
                 maskEnodebCol,
                 nexthopIpAddEnodebCol,
                 nexthopVlanAddEnodebCol);
+        
+        //Table TWO init
+        TableColumn m200IpAddColl = new TableColumn("M2000 IP Address");
+        m200IpAddColl.setMinWidth(150);
+        m200IpAddColl.setCellValueFactory(
+                new PropertyValueFactory<TableTwoConfigEnodeb, String>("M2000 IP Address"));
+        m200IpAddColl.setSortType(TableColumn.SortType.DESCENDING);
+        
+        TableColumn sgwNameIdCol = new TableColumn("S-GW Name_ID");
+        sgwNameIdCol.setMinWidth(150);
+        sgwNameIdCol.setCellValueFactory(
+                new PropertyValueFactory<TableTwoConfigEnodeb, String>("S-GW Name_ID"));
+        sgwNameIdCol.setSortType(TableColumn.SortType.DESCENDING);
+        
+        TableColumn sgwIpAddOneCol = new TableColumn("S-GW IP Address 1");
+        sgwIpAddOneCol.setMinWidth(150);
+        sgwIpAddOneCol.setCellValueFactory(
+                new PropertyValueFactory<TableTwoConfigEnodeb, String>("S-GW IP Address 1"));
+        sgwIpAddOneCol.setSortType(TableColumn.SortType.DESCENDING);
+        
+        TableColumn sgwIpAddTwoCol = new TableColumn("S-GW IP Address 2");
+        sgwIpAddTwoCol.setMinWidth(150);
+        sgwIpAddTwoCol.setCellValueFactory(
+                new PropertyValueFactory<TableTwoConfigEnodeb, String>("S-GW IP Address 2"));
+        sgwIpAddTwoCol.setSortType(TableColumn.SortType.DESCENDING);
+        
+        TableColumn sgwIpAddThreeCol = new TableColumn("S-GW IP Address 3");
+        sgwIpAddThreeCol.setMinWidth(150);
+        sgwIpAddThreeCol.setCellValueFactory(
+                new PropertyValueFactory<TableTwoConfigEnodeb, String>("S-GW IP Address 3"));
+        sgwIpAddThreeCol.setSortType(TableColumn.SortType.DESCENDING);
+        
+        TableColumn sgwIpAddFourCol = new TableColumn("S-GW IP Address 4");
+        sgwIpAddFourCol.setMinWidth(150);
+        sgwIpAddFourCol.setCellValueFactory(
+                new PropertyValueFactory<TableTwoConfigEnodeb, String>("S-GW IP Address 4"));
+        sgwIpAddFourCol.setSortType(TableColumn.SortType.DESCENDING);
+        
+        TableColumn mmeNameCol = new TableColumn("MME Name");
+        sgwIpAddFourCol.setMinWidth(150);
+        sgwIpAddFourCol.setCellValueFactory(
+                new PropertyValueFactory<TableTwoConfigEnodeb, String>("MME Name"));
+        sgwIpAddFourCol.setSortType(TableColumn.SortType.DESCENDING);
+        
+        TableColumn mmeIpAddFirstCol = new TableColumn("MME IP Address (First)");
+        mmeIpAddFirstCol.setMinWidth(300);
+        mmeIpAddFirstCol.setCellValueFactory(
+                new PropertyValueFactory<TableTwoConfigEnodeb, String>("MME IP Address (First)"));
+        mmeIpAddFirstCol.setSortType(TableColumn.SortType.DESCENDING);
+        
+        TableColumn mmeIpAddSecondCol = new TableColumn("MME IP Address (Second)");
+        mmeIpAddSecondCol.setMinWidth(300);
+        mmeIpAddSecondCol.setCellValueFactory(
+                new PropertyValueFactory<TableTwoConfigEnodeb, String>("MME IP Address (Second)"));
+        mmeIpAddSecondCol.setSortType(TableColumn.SortType.DESCENDING);
+        
+        TableColumn ipv4AddClockServerCol = new TableColumn("IPv4 Address of the IP Clock Server");
+        ipv4AddClockServerCol.setMinWidth(300);
+        ipv4AddClockServerCol.setCellValueFactory(
+                new PropertyValueFactory<TableTwoConfigEnodeb, String>("IPv4 Address of the IP Clock Server"));
+        ipv4AddClockServerCol.setSortType(TableColumn.SortType.DESCENDING);
+        
+        TableColumn nexthopAddClockServerCol = new TableColumn("Next-Hop IP Address - IP Clock Server");
+        nexthopAddClockServerCol.setMinWidth(300);
+        nexthopAddClockServerCol.setCellValueFactory(
+                new PropertyValueFactory<TableTwoConfigEnodeb, String>("Next-Hop IP Address - IP Clock Server"));
+        nexthopAddClockServerCol.setSortType(TableColumn.SortType.DESCENDING);
+        
+        TableColumn vlanAddClockServerCol = new TableColumn("Next-Hop VLAN IP - Clock Server");
+        vlanAddClockServerCol.setMinWidth(300);
+        vlanAddClockServerCol.setCellValueFactory(
+                new PropertyValueFactory<TableTwoConfigEnodeb, String>("Next-Hop VLAN IP - Clock Server"));
+        vlanAddClockServerCol.setSortType(TableColumn.SortType.DESCENDING);
+        //tableInitConfigOne.setItems(data);
+        tableInitConfigTwo.getColumns().addAll(
+                m200IpAddColl,
+                sgwNameIdCol,
+                sgwIpAddOneCol,
+                sgwIpAddTwoCol,
+                sgwIpAddThreeCol,
+                sgwIpAddFourCol,
+                mmeNameCol,
+                mmeIpAddFirstCol,
+                mmeIpAddSecondCol,
+                ipv4AddClockServerCol,
+                nexthopAddClockServerCol,
+                vlanAddClockServerCol);
+        
+        //Table Three init
+        TableColumn cellCol = new TableColumn("CELL");
+        cellCol.setMinWidth(300);
+        cellCol.setCellValueFactory(
+                new PropertyValueFactory<TableThreeConfigEnodeb, String>("CELL"));
+        cellCol.setSortType(TableColumn.SortType.DESCENDING);
+        
+        TableColumn txrxModeCol = new TableColumn("TX/RX Mode");
+        txrxModeCol.setMinWidth(150);
+        txrxModeCol.setCellValueFactory(
+                new PropertyValueFactory<TableThreeConfigEnodeb, String>("TX/RX Mode"));
+        txrxModeCol.setSortType(TableColumn.SortType.DESCENDING);
+        
+        TableColumn pciCol = new TableColumn("PCI");
+        pciCol.setMinWidth(150);
+        pciCol.setCellValueFactory(
+                new PropertyValueFactory<TableThreeConfigEnodeb, String>("PCI"));
+        pciCol.setSortType(TableColumn.SortType.DESCENDING);
+        
+        TableColumn downlinkCol = new TableColumn("Downlink EARFCN");
+        downlinkCol.setMinWidth(300);
+        downlinkCol.setCellValueFactory(
+                new PropertyValueFactory<TableThreeConfigEnodeb, String>("Downlink EARFCN"));
+        downlinkCol.setSortType(TableColumn.SortType.DESCENDING);
+        //tableInitConfigOne.setItems(data);
+        tableInitConfigThree.getColumns().addAll(
+                cellCol,
+                txrxModeCol,
+                pciCol,
+                downlinkCol);
     }    
     
 }
