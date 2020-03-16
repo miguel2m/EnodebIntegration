@@ -64,7 +64,7 @@ public class ViewFactory {
     }
     
     
-    public void showModalStage(Stage stageParent,BaseController _baseController){
+    public void showModalStage(Stage stageParent,BaseController _baseController,String _title){
         FXMLLoader fxmll = new FXMLLoader(getClass().getResource(_baseController.getFxmlName()));
         fxmll.setController(_baseController);
         Parent parent = null;
@@ -77,11 +77,23 @@ public class ViewFactory {
         Stage stage = new Stage();
         //stage.
         //stage.show();
+        stage.setTitle(_title);
         stage.initOwner(stageParent);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(scene);
+        stage.getIcons().add(new Image(ViewFactory.class.getResourceAsStream("assets/antenna.png")));
         stage.showAndWait();
     }
+    
+    public void showAlertValidation(Stage stageParent,String title,String msg){
+        Alert alert = new Alert(Alert.AlertType.ERROR,
+                    msg);
+            alert.initOwner(stageParent);
+            alert.initModality(Modality.APPLICATION_MODAL);
+            alert.setTitle(title);
+            alert.showAndWait();
+    }
+    
     
     public void showHelpMainWindow(Stage stageParent){
         FlowPane fp = new FlowPane();

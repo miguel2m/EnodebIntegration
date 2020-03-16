@@ -7,11 +7,16 @@ package controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import model.initiallyconfig.TableOneConfigEnodeb;
+import model.initiallyconfig.TableThreeConfigEnodeb;
+import model.initiallyconfig.TableTwoConfigEnodeb;
 import view.ViewFactory;
 
 /**
@@ -19,6 +24,11 @@ import view.ViewFactory;
  * @author P05144
  */
 public class MainViewController extends BaseController implements Initializable {
+    //InitiallyConfig
+    private ObservableList<TableOneConfigEnodeb> _initiallyConfigTableOne = FXCollections.observableArrayList();
+    private ObservableList<TableTwoConfigEnodeb> _initiallyConfigTableTwo = FXCollections.observableArrayList();
+    private ObservableList<TableThreeConfigEnodeb> _initiallyConfigTableThree = FXCollections.observableArrayList();
+    
     @FXML
     private BorderPane mainBorderPanel;
 
@@ -68,7 +78,10 @@ public class MainViewController extends BaseController implements Initializable 
     void onMainInitiallyConfig(ActionEvent event) {
         BaseController _baseController = new InitiallyConfigController(
                 viewFactory,
-                "InitiallyConfig.fxml"
+                "InitiallyConfig.fxml",
+                _initiallyConfigTableOne,
+                _initiallyConfigTableTwo,
+                _initiallyConfigTableThree
         );
         viewFactory.addStageCenterBorderPanel(mainBorderPanel, _baseController);
     }
@@ -100,7 +113,10 @@ public class MainViewController extends BaseController implements Initializable 
     public void initialize(URL url, ResourceBundle rb) {     
         BaseController _baseController = new InitiallyConfigController(
                 viewFactory,
-                "InitiallyConfig.fxml"
+                "InitiallyConfig.fxml",
+                _initiallyConfigTableOne,
+                _initiallyConfigTableTwo,
+                _initiallyConfigTableThree
         );
         viewFactory.addStageCenterBorderPanel(mainBorderPanel, _baseController);
     }    

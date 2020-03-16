@@ -28,10 +28,9 @@
                             <MenuItem mnemonicParsing="false" onAction="#onAddTableInitOne" text="Agregar" />
                             <MenuItem mnemonicParsing="false" onAction="#onUpdateTableInitOne" text="Actualizar" />
                               <MenuItem mnemonicParsing="false" onAction="#onDeleteTableInitOne" text="Eliminar" />
-                              <MenuItem mnemonicParsing="false" onAction="#onDuplicateTableInitOne" text="Duplicar" />
                           </items>
                         </MenuButton>
-                        <ScrollPane fitToHeight="true" minHeight="-Infinity" prefHeight="150.0" HBox.hgrow="ALWAYS">
+                        <ScrollPane fitToHeight="true" minHeight="-Infinity" prefHeight="90.0" HBox.hgrow="ALWAYS">
                           <content>
                             <AnchorPane>
                                  <children>
@@ -53,10 +52,9 @@
                               <MenuItem mnemonicParsing="false" onAction="#onAddTableInitTwo" text="Agregar" />
                               <MenuItem mnemonicParsing="false" onAction="#onUpdateTableInitTwo" text="Actualizar" />
                               <MenuItem mnemonicParsing="false" onAction="#onDeleteTableInitTwo" text="Eliminar" />
-                              <MenuItem mnemonicParsing="false" onAction="#onDuplicateTableInitTwo" text="Duplicar" />
                            </items>
                         </MenuButton>
-                        <ScrollPane fitToHeight="true" minHeight="-Infinity" prefHeight="150.0" HBox.hgrow="ALWAYS">
+                        <ScrollPane fitToHeight="true" minHeight="-Infinity" prefHeight="90.0" HBox.hgrow="ALWAYS">
                            <content>
                               <AnchorPane>
                                  <children>

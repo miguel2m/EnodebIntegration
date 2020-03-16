@@ -25,120 +25,116 @@ public class TableTwoConfigEnodeb {
     private SimpleStringProperty nexthopAddClockServer;
     private SimpleStringProperty vlanAddClockServer;
 
-    public TableTwoConfigEnodeb(SimpleStringProperty m200IpAdd, SimpleStringProperty sgwNameId, SimpleStringProperty sgwIpAddOne, SimpleStringProperty sgwIpAddTwo, SimpleStringProperty sgwIpAddThree, SimpleStringProperty sgwIpAddFour, SimpleStringProperty mmeName, SimpleStringProperty mmeIpAddFirst, SimpleStringProperty mmeIpAddSecond, SimpleStringProperty ipv4AddClockServer, SimpleStringProperty nexthopAddClockServer, SimpleStringProperty vlanAddClockServer) {
-        this.m200IpAdd = m200IpAdd;
-        this.sgwNameId = sgwNameId;
-        this.sgwIpAddOne = sgwIpAddOne;
-        this.sgwIpAddTwo = sgwIpAddTwo;
-        this.sgwIpAddThree = sgwIpAddThree;
-        this.sgwIpAddFour = sgwIpAddFour;
-        this.mmeName = mmeName;
-        this.mmeIpAddFirst = mmeIpAddFirst;
-        this.mmeIpAddSecond = mmeIpAddSecond;
-        this.ipv4AddClockServer = ipv4AddClockServer;
-        this.nexthopAddClockServer = nexthopAddClockServer;
-        this.vlanAddClockServer = vlanAddClockServer;
+    public TableTwoConfigEnodeb(String m200IpAdd, String sgwNameId, String sgwIpAddOne, String sgwIpAddTwo, String sgwIpAddThree, String sgwIpAddFour, String mmeName, String mmeIpAddFirst, String mmeIpAddSecond, String ipv4AddClockServer, String nexthopAddClockServer, String vlanAddClockServer) {
+        this.m200IpAdd = new SimpleStringProperty( m200IpAdd);
+        this.sgwNameId = new SimpleStringProperty( sgwNameId);
+        this.sgwIpAddOne = new SimpleStringProperty( sgwIpAddOne);
+        this.sgwIpAddTwo = new SimpleStringProperty( sgwIpAddTwo);
+        this.sgwIpAddThree = new SimpleStringProperty( sgwIpAddThree);
+        this.sgwIpAddFour = new SimpleStringProperty( sgwIpAddFour);
+        this.mmeName = new SimpleStringProperty( mmeName);
+        this.mmeIpAddFirst = new SimpleStringProperty(  mmeIpAddFirst);
+        this.mmeIpAddSecond = new SimpleStringProperty( mmeIpAddSecond);
+        this.ipv4AddClockServer = new SimpleStringProperty( ipv4AddClockServer);
+        this.nexthopAddClockServer = new SimpleStringProperty( nexthopAddClockServer);
+        this.vlanAddClockServer = new SimpleStringProperty( vlanAddClockServer);
     }
 
-    public SimpleStringProperty getM200IpAdd() {
-        return m200IpAdd;
+    public String getM200IpAdd() {
+        return m200IpAdd.get();
     }
 
-    public void setM200IpAdd(SimpleStringProperty m200IpAdd) {
-        this.m200IpAdd = m200IpAdd;
+    public void setM200IpAdd(String m200IpAdd) {
+        this.m200IpAdd.set(m200IpAdd);
     }
 
-    public SimpleStringProperty getSgwNameId() {
-        return sgwNameId;
+    public String getSgwNameId() {
+        return sgwNameId.get();
     }
 
-    public void setSgwNameId(SimpleStringProperty sgwNameId) {
-        this.sgwNameId = sgwNameId;
+    public void setSgwNameId(String sgwNameId) {
+        this.sgwNameId.set(sgwNameId);
     }
 
-    public SimpleStringProperty getSgwIpAddOne() {
-        return sgwIpAddOne;
+    public String getSgwIpAddOne() {
+        return sgwIpAddOne.get();
     }
 
-    public void setSgwIpAddOne(SimpleStringProperty sgwIpAddOne) {
-        this.sgwIpAddOne = sgwIpAddOne;
+    public void setSgwIpAddOne(String sgwIpAddOne) {
+        this.sgwIpAddOne.set(sgwIpAddOne);
     }
 
-    public SimpleStringProperty getSgwIpAddTwo() {
-        return sgwIpAddTwo;
+    public String getSgwIpAddTwo() {
+        return sgwIpAddTwo.get();
     }
 
-    public void setSgwIpAddTwo(SimpleStringProperty sgwIpAddTwo) {
-        this.sgwIpAddTwo = sgwIpAddTwo;
+    public void setSgwIpAddTwo(String sgwIpAddTwo) {
+        this.sgwIpAddTwo.set(sgwIpAddTwo);
     }
 
-    public SimpleStringProperty getSgwIpAddThree() {
-        return sgwIpAddThree;
+    public String getSgwIpAddThree() {
+        return sgwIpAddThree.get();
     }
 
-    public void setSgwIpAddThree(SimpleStringProperty sgwIpAddThree) {
-        this.sgwIpAddThree = sgwIpAddThree;
+    public void setSgwIpAddThree(String sgwIpAddThree) {
+        this.sgwIpAddThree.set(sgwIpAddThree);
     }
 
-    public SimpleStringProperty getSgwIpAddFour() {
-        return sgwIpAddFour;
+    public String getSgwIpAddFour() {
+        return sgwIpAddFour.get();
     }
 
-    public void setSgwIpAddFour(SimpleStringProperty sgwIpAddFour) {
-        this.sgwIpAddFour = sgwIpAddFour;
+    public void setSgwIpAddFour(String sgwIpAddFour) {
+        this.sgwIpAddFour.set(sgwIpAddFour);
     }
 
-    public SimpleStringProperty getMmeName() {
-        return mmeName;
+    public String getMmeName() {
+        return mmeName.get();
     }
 
-    public void setMmeName(SimpleStringProperty mmeName) {
-        this.mmeName = mmeName;
+    public void setMmeName(String mmeName) {
+        this.mmeName.set(mmeName);
     }
 
-    public SimpleStringProperty getMmeIpAddFirst() {
-        return mmeIpAddFirst;
+    public String getMmeIpAddFirst() {
+        return mmeIpAddFirst.get();
     }
 
-    public void setMmeIpAddFirst(SimpleStringProperty mmeIpAddFirst) {
-        this.mmeIpAddFirst = mmeIpAddFirst;
+    public void setMmeIpAddFirst(String mmeIpAddFirst) {
+        this.mmeIpAddFirst.set(mmeIpAddFirst);
     }
 
-    public SimpleStringProperty getMmeIpAddSecond() {
-        return mmeIpAddSecond;
+    public String getMmeIpAddSecond() {
+        return mmeIpAddSecond.get();
     }
 
-    public void setMmeIpAddSecond(SimpleStringProperty mmeIpAddSecond) {
-        this.mmeIpAddSecond = mmeIpAddSecond;
+    public void setMmeIpAddSecond(String mmeIpAddSecond) {
+        this.mmeIpAddSecond.set(mmeIpAddSecond);
     }
 
-    public SimpleStringProperty getIpv4AddClockServer() {
-        return ipv4AddClockServer;
+    public String getIpv4AddClockServer() {
+        return ipv4AddClockServer.get();
     }
 
-    public void setIpv4AddClockServer(SimpleStringProperty ipv4AddClockServer) {
-        this.ipv4AddClockServer = ipv4AddClockServer;
+    public void setIpv4AddClockServer(String ipv4AddClockServer) {
+        this.ipv4AddClockServer.set(ipv4AddClockServer);
     }
 
-    public SimpleStringProperty getNexthopAddClockServer() {
-        return nexthopAddClockServer;
+    public String getNexthopAddClockServer() {
+        return nexthopAddClockServer.get();
     }
 
-    public void setNexthopAddClockServer(SimpleStringProperty nexthopAddClockServer) {
-        this.nexthopAddClockServer = nexthopAddClockServer;
+    public void setNexthopAddClockServer(String nexthopAddClockServer) {
+        this.nexthopAddClockServer.set(nexthopAddClockServer);
     }
 
-    public SimpleStringProperty getVlanAddClockServer() {
-        return vlanAddClockServer;
+    public String getVlanAddClockServer() {
+        return vlanAddClockServer.get();
     }
 
-    public void setVlanAddClockServer(SimpleStringProperty vlanAddClockServer) {
-        this.vlanAddClockServer = vlanAddClockServer;
+    public void setVlanAddClockServer(String vlanAddClockServer) {
+        this.vlanAddClockServer.set(vlanAddClockServer);
     }
-
-    
-
-    
     
     @Override
     public String toString() {

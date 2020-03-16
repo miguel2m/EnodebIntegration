@@ -20,61 +20,61 @@ public class TableOneConfigEnodeb {
     private SimpleStringProperty nexthopIpAddEnodeb;
     private SimpleStringProperty nexthopVlanAddEnodeb;
 
-    public TableOneConfigEnodeb(SimpleStringProperty neEnodeb, SimpleStringProperty ethernetPortNumberEnodeb, SimpleStringProperty interfaceIpAddEnodeb, SimpleStringProperty maskEnodeb, SimpleStringProperty nexthopIpAddEnodeb, SimpleStringProperty nexthopVlanAddEnodeb) {
-        this.neEnodeb = neEnodeb;
-        this.ethernetPortNumberEnodeb = ethernetPortNumberEnodeb;
-        this.interfaceIpAddEnodeb = interfaceIpAddEnodeb;
-        this.maskEnodeb = maskEnodeb;
-        this.nexthopIpAddEnodeb = nexthopIpAddEnodeb;
-        this.nexthopVlanAddEnodeb = nexthopVlanAddEnodeb;
+    public TableOneConfigEnodeb(String neEnodeb, String ethernetPortNumberEnodeb, String interfaceIpAddEnodeb, String maskEnodeb, String nexthopIpAddEnodeb, String nexthopVlanAddEnodeb) {
+        this.neEnodeb = new SimpleStringProperty (neEnodeb);
+        this.ethernetPortNumberEnodeb = new SimpleStringProperty (ethernetPortNumberEnodeb);
+        this.interfaceIpAddEnodeb = new SimpleStringProperty (interfaceIpAddEnodeb);
+        this.maskEnodeb = new SimpleStringProperty (maskEnodeb);
+        this.nexthopIpAddEnodeb = new SimpleStringProperty (nexthopIpAddEnodeb);
+        this.nexthopVlanAddEnodeb = new SimpleStringProperty (nexthopVlanAddEnodeb);
     }
 
-    public SimpleStringProperty getNeEnodeb() {
-        return neEnodeb;
+    public String getNeEnodeb() {
+        return neEnodeb.get();
     }
 
-    public void setNeEnodeb(SimpleStringProperty neEnodeb) {
-        this.neEnodeb = neEnodeb;
+    public void setNeEnodeb(String neEnodeb) {
+        this.neEnodeb.set(neEnodeb);
     }
 
-    public SimpleStringProperty getEthernetPortNumberEnodeb() {
-        return ethernetPortNumberEnodeb;
+    public String getEthernetPortNumberEnodeb() {
+        return ethernetPortNumberEnodeb.get();
     }
 
-    public void setEthernetPortNumberEnodeb(SimpleStringProperty ethernetPortNumberEnodeb) {
-        this.ethernetPortNumberEnodeb = ethernetPortNumberEnodeb;
+    public void setEthernetPortNumberEnodeb(String ethernetPortNumberEnodeb) {
+        this.ethernetPortNumberEnodeb.set(ethernetPortNumberEnodeb);
     }
 
-    public SimpleStringProperty getInterfaceIpAddEnodeb() {
-        return interfaceIpAddEnodeb;
+    public String getInterfaceIpAddEnodeb() {
+        return interfaceIpAddEnodeb.get();
     }
 
-    public void setInterfaceIpAddEnodeb(SimpleStringProperty interfaceIpAddEnodeb) {
-        this.interfaceIpAddEnodeb = interfaceIpAddEnodeb;
+    public void setInterfaceIpAddEnodeb(String interfaceIpAddEnodeb) {
+        this.interfaceIpAddEnodeb.set(interfaceIpAddEnodeb);
     }
 
-    public SimpleStringProperty getMaskEnodeb() {
-        return maskEnodeb;
+    public String getMaskEnodeb() {
+        return maskEnodeb.get();
     }
 
-    public void setMaskEnodeb(SimpleStringProperty maskEnodeb) {
-        this.maskEnodeb = maskEnodeb;
+    public void setMaskEnodeb(String maskEnodeb) {
+        this.maskEnodeb.set(maskEnodeb);
     }
 
-    public SimpleStringProperty getNexthopIpAddEnodeb() {
-        return nexthopIpAddEnodeb;
+    public String getNexthopIpAddEnodeb() {
+        return nexthopIpAddEnodeb.get();
     }
 
-    public void setNexthopIpAddEnodeb(SimpleStringProperty nexthopIpAddEnodeb) {
-        this.nexthopIpAddEnodeb = nexthopIpAddEnodeb;
+    public void setNexthopIpAddEnodeb(String nexthopIpAddEnodeb) {
+        this.nexthopIpAddEnodeb.set(nexthopIpAddEnodeb);
     }
 
-    public SimpleStringProperty getNexthopVlanAddEnodeb() {
-        return nexthopVlanAddEnodeb;
+    public String getNexthopVlanAddEnodeb() {
+        return nexthopVlanAddEnodeb.get();
     }
 
-    public void setNexthopVlanAddEnodeb(SimpleStringProperty nexthopVlanAddEnodeb) {
-        this.nexthopVlanAddEnodeb = nexthopVlanAddEnodeb;
+    public void setNexthopVlanAddEnodeb(String nexthopVlanAddEnodeb) {
+        this.nexthopVlanAddEnodeb.set(nexthopVlanAddEnodeb);
     }
 
 

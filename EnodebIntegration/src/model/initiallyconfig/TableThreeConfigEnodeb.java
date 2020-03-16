@@ -17,43 +17,43 @@ public class TableThreeConfigEnodeb {
     private SimpleStringProperty pci;
     private SimpleStringProperty downlink;
 
-    public TableThreeConfigEnodeb(SimpleStringProperty cell, SimpleStringProperty txrxMode, SimpleStringProperty pci, SimpleStringProperty downlink) {
-        this.cell = cell;
-        this.txrxMode = txrxMode;
-        this.pci = pci;
-        this.downlink = downlink;
+    public TableThreeConfigEnodeb(String cell, String txrxMode, String pci, String downlink) {
+        this.cell = new SimpleStringProperty (cell);
+        this.txrxMode =new SimpleStringProperty ( txrxMode);
+        this.pci = new SimpleStringProperty (pci);
+        this.downlink = new SimpleStringProperty (downlink);
     }
 
-    public SimpleStringProperty getCell() {
-        return cell;
+    public String getCell() {
+        return cell.get();
     }
 
-    public void setCell(SimpleStringProperty cell) {
-        this.cell = cell;
+    public void setCell(String cell) {
+        this.cell.set(cell);
     }
 
-    public SimpleStringProperty getTxrxMode() {
-        return txrxMode;
+    public String getTxrxMode() {
+        return txrxMode.get();
     }
 
-    public void setTxrxMode(SimpleStringProperty txrxMode) {
-        this.txrxMode = txrxMode;
+    public void setTxrxMode(String txrxMode) {
+        this.txrxMode.set(txrxMode);
     }
 
-    public SimpleStringProperty getPci() {
-        return pci;
+    public String getPci() {
+        return pci.get();
     }
 
-    public void setPci(SimpleStringProperty pci) {
-        this.pci = pci;
+    public void setPci(String pci) {
+        this.pci.set(pci);
     }
 
-    public SimpleStringProperty getDownlink() {
-        return downlink;
+    public String getDownlink() {
+        return downlink.get();
     }
 
-    public void setDownlink(SimpleStringProperty downlink) {
-        this.downlink = downlink;
+    public void setDownlink(String downlink) {
+        this.downlink.set(downlink);
     }
 
     @Override
