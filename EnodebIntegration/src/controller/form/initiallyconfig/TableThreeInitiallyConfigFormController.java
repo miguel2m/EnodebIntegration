@@ -8,8 +8,13 @@ package controller.form.initiallyconfig;
 import controller.BaseController;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import model.initiallyconfig.TableThreeConfigEnodeb;
 import view.ViewFactory;
 
 /**
@@ -18,14 +23,84 @@ import view.ViewFactory;
  * @author Miguelangel
  */
 public class TableThreeInitiallyConfigFormController extends BaseController implements Initializable {
+
     private TableView tableInitConfigThree;
     private boolean isUpdate;
+
+    @FXML
+    private TextField cellTableThreeInitConfig;
+
+    @FXML
+    private TextField trxModeTableThreeInitConfig;
+
+    @FXML
+    private TextField pciTableThreeInitConfig;
+
+    @FXML
+    private TextField downlinkTableThreeInitConfig;
+
     public TableThreeInitiallyConfigFormController(ViewFactory viewFactory, String fxmlName,
             TableView tableInitConfigThree,
             boolean isUpdate) {
         super(viewFactory, fxmlName);
-        this.tableInitConfigThree=tableInitConfigThree;
-        this.isUpdate=isUpdate;
+        this.tableInitConfigThree = tableInitConfigThree;
+        this.isUpdate = isUpdate;
+    }
+
+    @FXML
+    void onCancelTableThreeInitConfig(ActionEvent event) {
+        viewFactory.closeStage((Stage) cellTableThreeInitConfig.getScene().getWindow());
+    }
+
+    @FXML
+    void onTableThreeInitConfig(ActionEvent event) {
+        if (!cellTableThreeInitConfig.getText().isEmpty()) {
+            if (!trxModeTableThreeInitConfig.getText().isEmpty()) {
+                if (!pciTableThreeInitConfig.getText().isEmpty()) {
+                    if (!downlinkTableThreeInitConfig.getText().isEmpty()) {
+                        if (!isUpdate) {
+                            tableInitConfigThree.getItems().add(
+                                    new TableThreeConfigEnodeb(
+                                            cellTableThreeInitConfig.getText(),
+                                            trxModeTableThreeInitConfig.getText(),
+                                            pciTableThreeInitConfig.getText(),
+                                            downlinkTableThreeInitConfig.getText()
+                                    )
+                            );
+                        } else {
+                            TableThreeConfigEnodeb _tableThreeConfigEnodeb
+                                    = (TableThreeConfigEnodeb) tableInitConfigThree.getSelectionModel().getSelectedItem();
+                            _tableThreeConfigEnodeb.setCell(cellTableThreeInitConfig.getText());
+                            _tableThreeConfigEnodeb.setTxrxMode(trxModeTableThreeInitConfig.getText());
+                            _tableThreeConfigEnodeb.setPci(pciTableThreeInitConfig.getText());
+                            _tableThreeConfigEnodeb.setDownlink(downlinkTableThreeInitConfig.getText());
+                            tableInitConfigThree.refresh();
+                        }
+                        viewFactory.closeStage((Stage) cellTableThreeInitConfig.getScene().getWindow());
+                    } else {
+                        viewFactory.showAlertValidation(
+                                (Stage) cellTableThreeInitConfig.getScene().getWindow(),
+                                "Downlink EARFCN Vacío",
+                                "Downlink EARFCN no puede estar vacío");
+                    }
+                } else {
+                    viewFactory.showAlertValidation(
+                            (Stage) cellTableThreeInitConfig.getScene().getWindow(),
+                            "PCI Vacío",
+                            "PCI no puede estar vacío");
+                }
+            } else {
+                viewFactory.showAlertValidation(
+                        (Stage) cellTableThreeInitConfig.getScene().getWindow(),
+                        "TX/RX MODE Vacío",
+                        "TX/RX MODE no puede estar vacío");
+            }
+        } else {
+            viewFactory.showAlertValidation(
+                    (Stage) cellTableThreeInitConfig.getScene().getWindow(),
+                    "CELL Vacío",
+                    "CELL no puede estar vacío");
+        }
     }
 
     /**
@@ -34,6 +109,14 @@ public class TableThreeInitiallyConfigFormController extends BaseController impl
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
+        if (isUpdate) {
+            TableThreeConfigEnodeb _tableThreeConfigEnodeb
+                    = (TableThreeConfigEnodeb) tableInitConfigThree.getSelectionModel().getSelectedItem();
+            cellTableThreeInitConfig.setText(_tableThreeConfigEnodeb.getCell());
+            trxModeTableThreeInitConfig.setText(_tableThreeConfigEnodeb.getTxrxMode());
+            pciTableThreeInitConfig.setText(_tableThreeConfigEnodeb.getPci());
+            downlinkTableThreeInitConfig.setText(_tableThreeConfigEnodeb.getDownlink());
+        }
+    }
+
 }

@@ -272,6 +272,7 @@ public class TableTwoInitiallyConfigFormController extends BaseController implem
         if(isUpdate){
             TableTwoConfigEnodeb _tableTwoConfigEnodeb
                     = (TableTwoConfigEnodeb) tableInitConfigTwo.getSelectionModel().getSelectedItem();
+            System.out.println(""+tableInitConfigTwo.getItems().get(0).toString());
             m2000IpAddTableTwo.setText(_tableTwoConfigEnodeb.getM200IpAdd());
             sgwNameIdTableTwo.setText(_tableTwoConfigEnodeb.getSgwNameId());
             sgwIp1TableTwo.setText(_tableTwoConfigEnodeb.getSgwIpAddOne());
