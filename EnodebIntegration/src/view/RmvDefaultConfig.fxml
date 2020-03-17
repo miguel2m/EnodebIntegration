@@ -2,8 +2,12 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
 <ScrollPane fitToHeight="true" fitToWidth="true" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
@@ -16,6 +20,31 @@
                </padding>
                <children>
                   <Label text="Rmv Default Config" />
+                  <HBox spacing="10.0">
+                     <children>
+                        <MenuButton minWidth="-Infinity" mnemonicParsing="false" prefWidth="103.0" text="Opciones">
+                           <items>
+                              <MenuItem mnemonicParsing="false" onAction="#onAddTableOneRmvDefault" text="Agregar" />
+                              <MenuItem mnemonicParsing="false" onAction="#onUpdateTableOneRmvDefault" text="Actualizar" />
+                              <MenuItem mnemonicParsing="false" onAction="#onDeleteTableOneRmvDefault" text="Eliminar" />
+                           </items>
+                        </MenuButton>
+                        <ScrollPane fitToHeight="true" minHeight="-Infinity" prefHeight="90.0" HBox.hgrow="ALWAYS">
+                           <content>
+                              <AnchorPane>
+                                 <children>
+                                    <TableView fx:id="tableOneRmvDefault" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </ScrollPane>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </HBox>
+                  <Label text="Preview MML command" />
+                  <Label fx:id="mmlComandRmvDefault" textFill="#00ab39" />
                </children>
             </VBox>
          </children>

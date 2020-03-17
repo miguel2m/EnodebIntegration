@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import model.initiallyconfig.TableOneConfigEnodeb;
 import model.initiallyconfig.TableThreeConfigEnodeb;
 import model.initiallyconfig.TableTwoConfigEnodeb;
+import model.rmvdefaultconfig.TableOneRmvDefaultConfig;
 import view.ViewFactory;
 
 /**
@@ -28,7 +29,8 @@ public class MainViewController extends BaseController implements Initializable 
     private ObservableList<TableOneConfigEnodeb> _initiallyConfigTableOne = FXCollections.observableArrayList();
     private ObservableList<TableTwoConfigEnodeb> _initiallyConfigTableTwo = FXCollections.observableArrayList();
     private ObservableList<TableThreeConfigEnodeb> _initiallyConfigTableThree = FXCollections.observableArrayList();
-    
+    //Remove Default Config
+    private ObservableList<TableOneRmvDefaultConfig> _rmvConfigTableOne = FXCollections.observableArrayList();
     @FXML
     private BorderPane mainBorderPanel;
 
@@ -90,7 +92,8 @@ public class MainViewController extends BaseController implements Initializable 
     void onMainRmvDefaultConfig(ActionEvent event) {
         BaseController _baseController = new RmvDefaultConfigController(
                 viewFactory,
-                "RmvDefaultConfig.fxml"
+                "RmvDefaultConfig.fxml",
+                _rmvConfigTableOne
         );
         viewFactory.addStageCenterBorderPanel(mainBorderPanel, _baseController);
     }
