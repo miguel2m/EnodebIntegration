@@ -71,21 +71,21 @@ public class TableOneInitiallyConfigFormController extends BaseController implem
                                                 
                                                 tableInitConfigOne.getItems().add(
                                                         new TableOneConfigEnodeb(
-                                                                neEnodebTableOne.getText(), 
-                                                                ethernetPortNumberEnodebTableOne.getText(),
-                                                                interfaceIpAddEnodebTableOne.getText(),
-                                                                maskEnodebTableOne.getText(),
-                                                                nexthopIpAddEnodebTableOne.getText(),
-                                                                nexthopVlanAddEnodebTableOne.getText()));
+                                                                neEnodebTableOne.getText().toUpperCase(), 
+                                                                ethernetPortNumberEnodebTableOne.getText().toUpperCase(),
+                                                                interfaceIpAddEnodebTableOne.getText().toUpperCase(),
+                                                                maskEnodebTableOne.getText().toUpperCase(),
+                                                                nexthopIpAddEnodebTableOne.getText().toUpperCase(),
+                                                                nexthopVlanAddEnodebTableOne.getText().toUpperCase()));
                                             }else{
                                                 TableOneConfigEnodeb _tableOneConfigEnodeb=
                                                         (TableOneConfigEnodeb) tableInitConfigOne.getSelectionModel().getSelectedItem();
-                                                _tableOneConfigEnodeb.setNeEnodeb(neEnodebTableOne.getText());
-                                                _tableOneConfigEnodeb.setEthernetPortNumberEnodeb(ethernetPortNumberEnodebTableOne.getText());
-                                                _tableOneConfigEnodeb.setInterfaceIpAddEnodeb(interfaceIpAddEnodebTableOne.getText());
-                                                _tableOneConfigEnodeb.setMaskEnodeb(maskEnodebTableOne.getText());
-                                                _tableOneConfigEnodeb.setNexthopIpAddEnodeb(nexthopIpAddEnodebTableOne.getText());
-                                                _tableOneConfigEnodeb.setNexthopVlanAddEnodeb(nexthopVlanAddEnodebTableOne.getText());
+                                                _tableOneConfigEnodeb.setNeEnodeb(neEnodebTableOne.getText().toUpperCase());
+                                                _tableOneConfigEnodeb.setEthernetPortNumberEnodeb(ethernetPortNumberEnodebTableOne.getText().toUpperCase());
+                                                _tableOneConfigEnodeb.setInterfaceIpAddEnodeb(interfaceIpAddEnodebTableOne.getText().toUpperCase());
+                                                _tableOneConfigEnodeb.setMaskEnodeb(maskEnodebTableOne.getText().toUpperCase());
+                                                _tableOneConfigEnodeb.setNexthopIpAddEnodeb(nexthopIpAddEnodebTableOne.getText().toUpperCase());
+                                                _tableOneConfigEnodeb.setNexthopVlanAddEnodeb(nexthopVlanAddEnodebTableOne.getText().toUpperCase());
                                                 tableInitConfigOne.refresh();
                                                 System.out.println("Update");
                                             }

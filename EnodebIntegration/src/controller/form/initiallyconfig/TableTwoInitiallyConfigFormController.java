@@ -97,36 +97,36 @@ public class TableTwoInitiallyConfigFormController extends BaseController implem
                                                                                         if (!isUpdate) {
                                                                                             tableInitConfigTwo.getItems().add(
                                                                                                     new TableTwoConfigEnodeb(
-                                                                                                            m2000IpAddTableTwo.getText(),
-                                                                                                            sgwNameIdTableTwo.getText(),
-                                                                                                            sgwIp1TableTwo.getText(),
-                                                                                                            sgwIp2TableTwo.getText(),
-                                                                                                            sgwIp3TableTwo.getText(),
-                                                                                                            sgwIp4TableTwo.getText(),
-                                                                                                            mmeNameTableTwo.getText(),
-                                                                                                            mmeIp1TableTwo.getText(),
-                                                                                                            mmeIp2TableTwo.getText(),
-                                                                                                            ipAddIpClockServerTableTwo.getText(),
-                                                                                                            nexthopIpAddIpClockServerTableTwo.getText(),
-                                                                                                            vlanIpAddIpClockServerTableTwo.getText()
+                                                                                                            m2000IpAddTableTwo.getText().toUpperCase(),
+                                                                                                            sgwNameIdTableTwo.getText().toUpperCase(),
+                                                                                                            sgwIp1TableTwo.getText().toUpperCase(),
+                                                                                                            sgwIp2TableTwo.getText().toUpperCase(),
+                                                                                                            sgwIp3TableTwo.getText().toUpperCase(),
+                                                                                                            sgwIp4TableTwo.getText().toUpperCase(),
+                                                                                                            mmeNameTableTwo.getText().toUpperCase(),
+                                                                                                            mmeIp1TableTwo.getText().toUpperCase(),
+                                                                                                            mmeIp2TableTwo.getText().toUpperCase(),
+                                                                                                            ipAddIpClockServerTableTwo.getText().toUpperCase(),
+                                                                                                            nexthopIpAddIpClockServerTableTwo.getText().toUpperCase(),
+                                                                                                            vlanIpAddIpClockServerTableTwo.getText().toUpperCase()
                                                                                                     )
                                                                                             );
                                                                                             //System.out.println(""+tableInitConfigTwo.getItems().get(0).toString());
                                                                                         } else {
                                                                                             TableTwoConfigEnodeb _tableTwoConfigEnodeb
                                                                                                     = (TableTwoConfigEnodeb) tableInitConfigTwo.getSelectionModel().getSelectedItem();
-                                                                                            _tableTwoConfigEnodeb.setM200IpAdd(m2000IpAddTableTwo.getText());
-                                                                                            _tableTwoConfigEnodeb.setSgwNameId(sgwNameIdTableTwo.getText());
-                                                                                            _tableTwoConfigEnodeb.setSgwIpAddOne(sgwIp1TableTwo.getText());
-                                                                                            _tableTwoConfigEnodeb.setSgwIpAddTwo(sgwIp2TableTwo.getText());
-                                                                                            _tableTwoConfigEnodeb.setSgwIpAddThree(sgwIp3TableTwo.getText());
-                                                                                            _tableTwoConfigEnodeb.setSgwIpAddFour(sgwIp4TableTwo.getText());
-                                                                                            _tableTwoConfigEnodeb.setMmeName(mmeNameTableTwo.getText());
-                                                                                            _tableTwoConfigEnodeb.setMmeIpAddFirst(mmeIp1TableTwo.getText());
-                                                                                            _tableTwoConfigEnodeb.setMmeIpAddSecond(mmeIp2TableTwo.getText());
-                                                                                            _tableTwoConfigEnodeb.setIpv4AddClockServer(ipAddIpClockServerTableTwo.getText());
-                                                                                            _tableTwoConfigEnodeb.setNexthopAddClockServer(nexthopIpAddIpClockServerTableTwo.getText());
-                                                                                            _tableTwoConfigEnodeb.setVlanAddClockServer(vlanIpAddIpClockServerTableTwo.getText());
+                                                                                            _tableTwoConfigEnodeb.setM200IpAdd(m2000IpAddTableTwo.getText().toUpperCase());
+                                                                                            _tableTwoConfigEnodeb.setSgwNameId(sgwNameIdTableTwo.getText().toUpperCase());
+                                                                                            _tableTwoConfigEnodeb.setSgwIpAddOne(sgwIp1TableTwo.getText().toUpperCase());
+                                                                                            _tableTwoConfigEnodeb.setSgwIpAddTwo(sgwIp2TableTwo.getText().toUpperCase());
+                                                                                            _tableTwoConfigEnodeb.setSgwIpAddThree(sgwIp3TableTwo.getText().toUpperCase());
+                                                                                            _tableTwoConfigEnodeb.setSgwIpAddFour(sgwIp4TableTwo.getText().toUpperCase());
+                                                                                            _tableTwoConfigEnodeb.setMmeName(mmeNameTableTwo.getText().toUpperCase());
+                                                                                            _tableTwoConfigEnodeb.setMmeIpAddFirst(mmeIp1TableTwo.getText().toUpperCase());
+                                                                                            _tableTwoConfigEnodeb.setMmeIpAddSecond(mmeIp2TableTwo.getText().toUpperCase());
+                                                                                            _tableTwoConfigEnodeb.setIpv4AddClockServer(ipAddIpClockServerTableTwo.getText().toUpperCase());
+                                                                                            _tableTwoConfigEnodeb.setNexthopAddClockServer(nexthopIpAddIpClockServerTableTwo.getText().toUpperCase());
+                                                                                            _tableTwoConfigEnodeb.setVlanAddClockServer(vlanIpAddIpClockServerTableTwo.getText().toUpperCase());
                                                                                             tableInitConfigTwo.refresh();
                                                                                         }
                                                                                         viewFactory.closeStage((Stage) vlanIpAddIpClockServerTableTwo.getScene().getWindow());

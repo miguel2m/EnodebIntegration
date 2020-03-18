@@ -16,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.initiallyconfig.TableOneConfigEnodeb;
@@ -34,7 +35,7 @@ public class RmvDefaultConfigController extends BaseController implements Initia
     private TableView tableOneRmvDefault;
 
     @FXML
-    private Label mmlComandRmvDefault;
+    private TextArea mmlComandRmvDefault;
     public RmvDefaultConfigController(ViewFactory viewFactory, String fxmlName,
             ObservableList<TableOneRmvDefaultConfig> _rmvConfigTableOne) {
         super(viewFactory, fxmlName);
@@ -94,7 +95,20 @@ public class RmvDefaultConfigController extends BaseController implements Initia
                     "Seleccione una fila ");
         }
     }
-    
+    private void setTextArea(){
+        mmlComandRmvDefault.clear();
+        _rmvConfigTableOne.forEach((t) -> {
+            if(t.getParameterIdRmv().equals("REFERENCE"))
+                mmlComandRmvDefault.setText("//");
+            if(t.getParameterIdRmv().equals("CREATE"))
+                mmlComandRmvDefault.setText("SET DHCPSW:SWITCH="
+                            + t.getSwitchRmv() + ","
+                            + "VLANSCANSW="
+                            + t.getVlanScanRmv() + ";");
+            if(t.getParameterIdRmv().equals("DELETE"))
+                mmlComandRmvDefault.setText("//RMV");
+        });
+    }
     /**
      * Initializes the controller class.
      */
@@ -126,6 +140,7 @@ public class RmvDefaultConfigController extends BaseController implements Initia
                 parameterIdRmvCol,
                 switchRmvCol,
                 vlanScanRmvCol);
+        setTextArea();
 
     }    
     

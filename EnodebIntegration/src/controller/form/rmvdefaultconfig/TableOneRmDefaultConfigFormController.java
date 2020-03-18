@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.rmvdefaultconfig.TableOneRmvDefaultConfig;
@@ -29,7 +30,7 @@ public class TableOneRmDefaultConfigFormController extends BaseController implem
 
     private TableView tableOneRmvDefaultConfig;
     private boolean isUpdate;
-    private Label mmlComandRmvDefault;
+    private TextArea mmlComandRmvDefault;
     @FXML
     private TextField switchTableOneFormRmv;
 
@@ -41,7 +42,7 @@ public class TableOneRmDefaultConfigFormController extends BaseController implem
 
     public TableOneRmDefaultConfigFormController(ViewFactory viewFactory, String fxmlName,
             TableView tableOneRmvDefaultConfig,
-            Label mmlComandRmvDefault,
+            TextArea mmlComandRmvDefault,
             boolean isUpdate) {
         super(viewFactory, fxmlName);
         this.tableOneRmvDefaultConfig = tableOneRmvDefaultConfig;
@@ -74,7 +75,7 @@ public class TableOneRmDefaultConfigFormController extends BaseController implem
                     _tableOneRmvDefaultConfig.setVlanScanRmv(vlanswTableOneFormRmv.getText().toUpperCase());
                     tableOneRmvDefaultConfig.refresh();
                 }
-                if (parameterIdTableOneFormRmv.getValue().equals("REFERENCE")) {
+                /*if (parameterIdTableOneFormRmv.getValue().equals("REFERENCE")) {
                     mmlComandRmvDefault.setText("//mml Command");
                 }
                 if (parameterIdTableOneFormRmv.getValue().equals("CREATE")) {
@@ -85,7 +86,8 @@ public class TableOneRmDefaultConfigFormController extends BaseController implem
                 }
                 if (parameterIdTableOneFormRmv.getValue().equals("DELETE")) {
                     mmlComandRmvDefault.setText("//RMV");
-                }
+                }*/
+                setTextArea();
                 viewFactory.closeStage((Stage) vlanswTableOneFormRmv.getScene().getWindow());
             } else {
                 viewFactory.showAlertValidation(
@@ -100,7 +102,22 @@ public class TableOneRmDefaultConfigFormController extends BaseController implem
                     "SWITCH no puede estar vacío");
         }
     }
-
+    private void setTextArea(){
+        mmlComandRmvDefault.clear();
+        tableOneRmvDefaultConfig.getItems().forEach((temp) -> {
+            TableOneRmvDefaultConfig t = 
+                    (TableOneRmvDefaultConfig)temp;
+            if(t.getParameterIdRmv().equals("REFERENCE"))
+                mmlComandRmvDefault.setText("//");
+            if(t.getParameterIdRmv().equals("CREATE"))
+                mmlComandRmvDefault.setText("SET DHCPSW:SWITCH="
+                            + t.getSwitchRmv() + ","
+                            + "VLANSCANSW="
+                            + t.getVlanScanRmv() + ";");
+            if(t.getParameterIdRmv().equals("DELETE"))
+                mmlComandRmvDefault.setText("//RMV");
+        });
+    }
     /**
      * Initializes the controller class.
      */

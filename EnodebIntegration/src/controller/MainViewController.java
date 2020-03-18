@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import model.configbasicdata.TableOneBasicData;
 import model.initiallyconfig.TableOneConfigEnodeb;
 import model.initiallyconfig.TableThreeConfigEnodeb;
 import model.initiallyconfig.TableTwoConfigEnodeb;
@@ -25,25 +26,42 @@ import view.ViewFactory;
  * @author P05144
  */
 public class MainViewController extends BaseController implements Initializable {
+
     //InitiallyConfig
     private ObservableList<TableOneConfigEnodeb> _initiallyConfigTableOne = FXCollections.observableArrayList();
     private ObservableList<TableTwoConfigEnodeb> _initiallyConfigTableTwo = FXCollections.observableArrayList();
     private ObservableList<TableThreeConfigEnodeb> _initiallyConfigTableThree = FXCollections.observableArrayList();
     //Remove Default Config
     private ObservableList<TableOneRmvDefaultConfig> _rmvConfigTableOne = FXCollections.observableArrayList();
+    //Config Basic Data
+    private ObservableList<TableOneBasicData> _tableOneBasicData = FXCollections.observableArrayList();
     @FXML
     private BorderPane mainBorderPanel;
 
     public MainViewController(ViewFactory viewFactory, String fxmlName) {
         super(viewFactory, fxmlName);
     }
-      
 
     @FXML
     void onMainConfigBasicData(ActionEvent event) {
+        if (_tableOneBasicData.isEmpty()) {
+            if (!_initiallyConfigTableOne.isEmpty()) {
+                TableOneBasicData _basicData
+                        = new TableOneBasicData(
+                                "REFERENCE",
+                                _initiallyConfigTableOne.get(0).getNeEnodeb(),
+                                "-",
+                                "-",
+                                "-",
+                                "-"
+                        );
+                _tableOneBasicData.add(_basicData);
+            }
+        }
         BaseController _baseController = new ConfigBasicDataController(
                 viewFactory,
-                "ConfigBasicData.fxml"
+                "ConfigBasicData.fxml",
+                _tableOneBasicData
         );
         viewFactory.addStageCenterBorderPanel(mainBorderPanel, _baseController);
     }
@@ -55,7 +73,7 @@ public class MainViewController extends BaseController implements Initializable 
                 "ConfigDeviceData.fxml"
         );
         viewFactory.addStageCenterBorderPanel(mainBorderPanel, _baseController);
-        
+
     }
 
     @FXML
@@ -97,23 +115,24 @@ public class MainViewController extends BaseController implements Initializable 
         );
         viewFactory.addStageCenterBorderPanel(mainBorderPanel, _baseController);
     }
-    
+
     @FXML
     void onExportScript(ActionEvent event) {
         System.out.println("onExportScript");
     }
-    
+
     @FXML
     void onCloseMainWindow(ActionEvent event) {
-        viewFactory.closeStage((Stage)mainBorderPanel.getScene().getWindow());
+        viewFactory.closeStage((Stage) mainBorderPanel.getScene().getWindow());
     }
+
     @FXML
     void onHelpMainWindow(ActionEvent event) {
-        viewFactory.showHelpMainWindow((Stage)mainBorderPanel.getScene().getWindow());
+        viewFactory.showHelpMainWindow((Stage) mainBorderPanel.getScene().getWindow());
     }
-    
+
     @Override
-    public void initialize(URL url, ResourceBundle rb) {     
+    public void initialize(URL url, ResourceBundle rb) {
         BaseController _baseController = new InitiallyConfigController(
                 viewFactory,
                 "InitiallyConfig.fxml",
@@ -122,6 +141,6 @@ public class MainViewController extends BaseController implements Initializable 
                 _initiallyConfigTableThree
         );
         viewFactory.addStageCenterBorderPanel(mainBorderPanel, _baseController);
-    }    
-    
+    }
+
 }

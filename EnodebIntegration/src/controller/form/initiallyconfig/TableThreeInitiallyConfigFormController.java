@@ -61,19 +61,19 @@ public class TableThreeInitiallyConfigFormController extends BaseController impl
                         if (!isUpdate) {
                             tableInitConfigThree.getItems().add(
                                     new TableThreeConfigEnodeb(
-                                            cellTableThreeInitConfig.getText(),
-                                            trxModeTableThreeInitConfig.getText(),
-                                            pciTableThreeInitConfig.getText(),
-                                            downlinkTableThreeInitConfig.getText()
+                                            cellTableThreeInitConfig.getText().toUpperCase(),
+                                            trxModeTableThreeInitConfig.getText().toUpperCase(),
+                                            pciTableThreeInitConfig.getText().toUpperCase(),
+                                            downlinkTableThreeInitConfig.getText().toUpperCase()
                                     )
                             );
                         } else {
                             TableThreeConfigEnodeb _tableThreeConfigEnodeb
                                     = (TableThreeConfigEnodeb) tableInitConfigThree.getSelectionModel().getSelectedItem();
-                            _tableThreeConfigEnodeb.setCell(cellTableThreeInitConfig.getText());
-                            _tableThreeConfigEnodeb.setTxrxMode(trxModeTableThreeInitConfig.getText());
-                            _tableThreeConfigEnodeb.setPci(pciTableThreeInitConfig.getText());
-                            _tableThreeConfigEnodeb.setDownlink(downlinkTableThreeInitConfig.getText());
+                            _tableThreeConfigEnodeb.setCell(cellTableThreeInitConfig.getText().toUpperCase());
+                            _tableThreeConfigEnodeb.setTxrxMode(trxModeTableThreeInitConfig.getText().toUpperCase());
+                            _tableThreeConfigEnodeb.setPci(pciTableThreeInitConfig.getText().toUpperCase());
+                            _tableThreeConfigEnodeb.setDownlink(downlinkTableThreeInitConfig.getText().toUpperCase());
                             tableInitConfigThree.refresh();
                         }
                         viewFactory.closeStage((Stage) cellTableThreeInitConfig.getScene().getWindow());
