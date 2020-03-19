@@ -24,7 +24,7 @@
                   <Label text="Config Basic Data" />
                   <Separator prefWidth="200.0" />
                   <Label text=" //NE configuration attributes" />
-                  <VBox spacing="5.0">
+                  <VBox alignment="TOP_CENTER" spacing="5.0">
                      <children>
                         <Label text="TABLE 1: //Set Network Element Configuration (SET NE)" textFill="#00ab1f" />
                         <HBox spacing="10.0">
@@ -54,7 +54,7 @@
                         <TextArea fx:id="mmlPreviewTableOneBasicData" editable="false" prefHeight="90.0" />
                      </children>
                   </VBox>
-                  <VBox spacing="5.0">
+                  <VBox alignment="TOP_CENTER" spacing="5.0">
                      <children>
                         <Label text="TABLE 2: //Set Node Configuration (SET NODE)" textFill="#00ab1f" />
                         <HBox spacing="10.0">
@@ -82,6 +82,38 @@
                         </HBox>
                         <Label text="MML comand NE configuration attributes" />
                         <TextArea fx:id="mmlPreviewTableTwoBasicData" editable="false" prefHeight="90.0" />
+                     </children>
+                  </VBox>
+                  <Separator prefWidth="200.0" />
+                  <VBox alignment="TOP_CENTER" spacing="5.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <Label text="TABLE 3: //Location information" textFill="#00ab1f" />
+                        <HBox spacing="10.0">
+                           <children>
+                              <MenuButton minWidth="-Infinity" mnemonicParsing="false" prefWidth="103.0" text="Opciones">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" onAction="#onAddTableThreeBasicData" text="Agregar" />
+                                    <MenuItem mnemonicParsing="false" onAction="#onUpdateTableThreeBasicData" text="Actualizar" />
+                                    <MenuItem mnemonicParsing="false" onAction="#onDeleteTableThreeBasicData" text="Eliminar" />
+                                    <MenuItem mnemonicParsing="false" onAction="#onDuplicarTableThreeBasicData" text="Duplicar" />
+                                 </items>
+                              </MenuButton>
+                              <ScrollPane fitToHeight="true" minHeight="-Infinity" prefHeight="150.0" HBox.hgrow="ALWAYS">
+                                 <content>
+                                    <AnchorPane>
+                                       <children>
+                                          <TableView fx:id="tableThreeBasicData" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <Label text="MML comand Location information" />
+                        <TextArea fx:id="mmlPreviewTableThreeBasicData" editable="false" maxHeight="150.0" minHeight="-Infinity" prefHeight="150.0" VBox.vgrow="ALWAYS" />
                      </children>
                   </VBox>
                   <Separator prefWidth="200.0" />

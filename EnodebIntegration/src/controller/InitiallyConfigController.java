@@ -332,10 +332,10 @@ public class InitiallyConfigController extends BaseController implements Initial
         sgwIpAddFourCol.setSortType(TableColumn.SortType.DESCENDING);
 
         TableColumn mmeNameCol = new TableColumn("MME Name");
-        sgwIpAddFourCol.setMinWidth(150);
-        sgwIpAddFourCol.setCellValueFactory(
+        mmeNameCol.setMinWidth(150);
+        mmeNameCol.setCellValueFactory(
                 new PropertyValueFactory<TableTwoConfigEnodeb, String>("mmeName"));
-        sgwIpAddFourCol.setSortType(TableColumn.SortType.DESCENDING);
+        mmeNameCol.setSortType(TableColumn.SortType.DESCENDING);
 
         TableColumn mmeIpAddFirstCol = new TableColumn("MME IP Address (First)");
         mmeIpAddFirstCol.setMinWidth(300);
