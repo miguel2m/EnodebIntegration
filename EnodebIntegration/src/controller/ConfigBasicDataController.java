@@ -126,7 +126,7 @@ public class ConfigBasicDataController extends BaseController implements Initial
     
     @FXML
     void onAddTableTwoBasicData(ActionEvent event) {
-        if(_tableOneBasicData.isEmpty()){
+        if(_tableTwoBasicData.isEmpty()){
             _baseController = new TableTwoConfigBasicDataController(
                     viewFactory,
                     "form/configbasicdata/TableTwoConfigBasicData.fxml",
