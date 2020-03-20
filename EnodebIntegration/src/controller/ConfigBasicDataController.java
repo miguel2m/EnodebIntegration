@@ -5,6 +5,7 @@
  */
 package controller;
 
+import controller.form.configbasicdata.TableFourConfigBasicDataController;
 import controller.form.configbasicdata.TableOneConfigBasicDataController;
 import controller.form.configbasicdata.TableThreeConfigBasicDataController;
 import controller.form.configbasicdata.TableTwoConfigBasicDataController;
@@ -21,6 +22,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import model.configbasicdata.TableFourBasicData;
 import model.configbasicdata.TableOneBasicData;
 import model.configbasicdata.TableThreeBasicData;
 import model.configbasicdata.TableTwoBasicData;
@@ -37,6 +39,7 @@ public class ConfigBasicDataController extends BaseController implements Initial
     private ObservableList<TableOneBasicData> _tableOneBasicData = FXCollections.observableArrayList();
     private ObservableList<TableTwoBasicData> _tableTwoBasicData = FXCollections.observableArrayList();
     private ObservableList<TableThreeBasicData> _tableThreeBasicData = FXCollections.observableArrayList();
+    private ObservableList<TableFourBasicData> _tableFourBasicData = FXCollections.observableArrayList();
     private BaseController _baseController;
     @FXML
     private TableView tableOneBasicData;
@@ -54,15 +57,23 @@ public class ConfigBasicDataController extends BaseController implements Initial
 
     @FXML
     private TextArea mmlPreviewTableThreeBasicData;
+    
+    @FXML
+    private TableView tableFourBasicData;
+
+    @FXML
+    private TextArea mmlPreviewTableFourBasicData;
 
     public ConfigBasicDataController(ViewFactory viewFactory, String fxmlName,
             ObservableList<TableOneBasicData> _tableOneBasicData,
             ObservableList<TableTwoBasicData> _tableTwoBasicData,
-            ObservableList<TableThreeBasicData> _tableThreeBasicData) {
+            ObservableList<TableThreeBasicData> _tableThreeBasicData,
+            ObservableList<TableFourBasicData> _tableFourBasicData) {
         super(viewFactory, fxmlName);
         this._tableOneBasicData = _tableOneBasicData;
         this._tableTwoBasicData = _tableTwoBasicData;
         this._tableThreeBasicData = _tableThreeBasicData;
+        this._tableFourBasicData = _tableFourBasicData;
     }
 
     @FXML
@@ -349,7 +360,83 @@ public class ConfigBasicDataController extends BaseController implements Initial
 
         });
     }
+    
+    @FXML
+    void onAddTableFourBasicData(ActionEvent event) {
+        if (tableFourBasicData.getItems().size() <8) {
+            _baseController = new TableFourConfigBasicDataController(
+                    viewFactory,
+                    "form/configbasicdata/TableFourConfigBasicData.fxml",
+                    tableFourBasicData,
+                    mmlPreviewTableFourBasicData,
+                    false);
+            viewFactory.showModalStage(
+                    (Stage) tableFourBasicData.getScene().getWindow(),
+                    _baseController,
+                    "TABLE 4: //eNodeB function");
+        } else {
+            viewFactory.showAlertValidation((Stage) tableFourBasicData.getScene().getWindow(),
+                        "TABLE 4: //eNodeB function",
+                        "Solo se permite agregar 8 filas");
+        }
+    }
+    @FXML
+    void onDeleteTableFourBasicData(ActionEvent event) {
+        if (!tableFourBasicData.getSelectionModel().isEmpty()) {
+            tableFourBasicData.getItems().remove(
+                    tableFourBasicData.getSelectionModel().getSelectedItem()
+            );
+        } else {
+            viewFactory.showAlertValidation((Stage) tableFourBasicData.getScene().getWindow(),
+                    "TABLE 4: //eNodeB function",
+                    "Seleccione una fila ");
+        }
+    }
+    @FXML
+    void onUpdateTableFourBasicData(ActionEvent event) {
+        if (!tableFourBasicData.getSelectionModel().isEmpty()) {
+            _baseController = new TableFourConfigBasicDataController(
+                    viewFactory,
+                    "form/configbasicdata/TableFourConfigBasicData.fxml",
+                    tableFourBasicData,
+                    mmlPreviewTableFourBasicData,
+                    true);
+            viewFactory.showModalStage(
+                    (Stage) tableFourBasicData.getScene().getWindow(),
+                    _baseController,
+                    "TABLE 4: //eNodeB function");
+        } else {
+            viewFactory.showAlertValidation((Stage) tableFourBasicData.getScene().getWindow(),
+                    "TABLE 4: //eNodeB function",
+                    "Seleccione una fila ");
+        }
+    }
+    
+    private void setTextAreaTableFour() {
+        mmlPreviewTableFourBasicData.clear();
+        tableFourBasicData.getItems().forEach((basicData) -> {
+            TableFourBasicData t = (TableFourBasicData) basicData;
+            if (t.getParameterId().equals("REFERENCE")) {
+                mmlPreviewTableFourBasicData.appendText("//\n");
+            }
+            if (t.getParameterId().equals("CREATE")) {
+                mmlPreviewTableFourBasicData.appendText(""
+                        + "ADD ENODEBFUNCTION:eNodeBFunctionName=\"" + t.geteNodeBFunctionName() + "\","
+                        + "ApplicationRef=" + t.getAppRef() + ","
+                        + "eNodeBId=" + t.getEnodebId() + ";"
+                );
+               
+            }
 
+            if (t.getParameterId().equals("DELETE")) {
+                mmlPreviewTableFourBasicData.appendText(
+                        "RMV ENODEBFUNCTION:ENODEBFUNCTIONNAME=\"" + t.geteNodeBFunctionName()+ "\";\n"
+                );
+            }
+
+        });
+    }
+    
     /**
      * Initializes the controller class.
      */
@@ -585,6 +672,46 @@ public class ConfigBasicDataController extends BaseController implements Initial
                 preciseCol3
         );
         setTextAreaTableThree();
+        
+        //Table FOUR Basic Data
+        TableColumn parameterIdCol4 = new TableColumn("Parameter Name");
+        parameterIdCol4.setMinWidth(200);
+        parameterIdCol4.setCellValueFactory(
+                new PropertyValueFactory<TableFourBasicData, String>("parameterId"));
+        parameterIdCol4.setSortType(TableColumn.SortType.DESCENDING);
+
+        TableColumn eNodeBFunctionNameCol = new TableColumn("eNodeB Function Name");
+        eNodeBFunctionNameCol.setMinWidth(200);
+        eNodeBFunctionNameCol.setCellValueFactory(
+                new PropertyValueFactory<TableTwoBasicData, String>("eNodeBFunctionName"));
+        eNodeBFunctionNameCol.setSortType(TableColumn.SortType.DESCENDING);
+
+        TableColumn appRefCol = new TableColumn("Application Reference");
+        appRefCol.setMinWidth(200);
+        appRefCol.setCellValueFactory(
+                new PropertyValueFactory<TableTwoBasicData, String>("appRef"));
+        appRefCol.setSortType(TableColumn.SortType.DESCENDING);
+
+        TableColumn enodebIdCol = new TableColumn("EnodeB ID");
+        enodebIdCol.setMinWidth(200);
+        enodebIdCol.setCellValueFactory(
+                new PropertyValueFactory<TableTwoBasicData, String>("enodebId"));
+        enodebIdCol.setSortType(TableColumn.SortType.DESCENDING);
+
+        TableColumn userLabelCol4 = new TableColumn("User Label");
+        userLabelCol4.setMinWidth(200);
+        userLabelCol4.setCellValueFactory(
+                new PropertyValueFactory<TableTwoBasicData, String>("userLabel"));
+        userLabelCol4.setSortType(TableColumn.SortType.DESCENDING);
+
+        tableFourBasicData.setItems(_tableFourBasicData);
+        tableFourBasicData.getColumns().addAll(parameterIdCol4,
+                eNodeBFunctionNameCol,
+                appRefCol,
+                enodebIdCol,
+                nodeIdCol,
+                userLabelCol4);
+        setTextAreaTableFour();
     }
 
 }
