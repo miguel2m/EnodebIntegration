@@ -5,11 +5,11 @@
  */
 package controller;
 
+import controller.form.configbasicdata.TableFiveConfigBasicDataController;
 import controller.form.configbasicdata.TableFourConfigBasicDataController;
 import controller.form.configbasicdata.TableOneConfigBasicDataController;
 import controller.form.configbasicdata.TableThreeConfigBasicDataController;
 import controller.form.configbasicdata.TableTwoConfigBasicDataController;
-import controller.form.rmvdefaultconfig.TableOneRmDefaultConfigFormController;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -22,11 +22,11 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import model.configbasicdata.TableFiveBasicData;
 import model.configbasicdata.TableFourBasicData;
 import model.configbasicdata.TableOneBasicData;
 import model.configbasicdata.TableThreeBasicData;
 import model.configbasicdata.TableTwoBasicData;
-import model.rmvdefaultconfig.TableOneRmvDefaultConfig;
 import view.ViewFactory;
 
 /**
@@ -40,6 +40,7 @@ public class ConfigBasicDataController extends BaseController implements Initial
     private ObservableList<TableTwoBasicData> _tableTwoBasicData = FXCollections.observableArrayList();
     private ObservableList<TableThreeBasicData> _tableThreeBasicData = FXCollections.observableArrayList();
     private ObservableList<TableFourBasicData> _tableFourBasicData = FXCollections.observableArrayList();
+    private ObservableList<TableFiveBasicData> _tableFiveBasicData = FXCollections.observableArrayList();
     private BaseController _baseController;
     @FXML
     private TableView tableOneBasicData;
@@ -63,17 +64,26 @@ public class ConfigBasicDataController extends BaseController implements Initial
 
     @FXML
     private TextArea mmlPreviewTableFourBasicData;
+    
+    @FXML
+    private TableView tableFiveBasicData;
+
+    @FXML
+    private TextArea mmlPreviewTableFiveBasicData;
+
 
     public ConfigBasicDataController(ViewFactory viewFactory, String fxmlName,
             ObservableList<TableOneBasicData> _tableOneBasicData,
             ObservableList<TableTwoBasicData> _tableTwoBasicData,
             ObservableList<TableThreeBasicData> _tableThreeBasicData,
-            ObservableList<TableFourBasicData> _tableFourBasicData) {
+            ObservableList<TableFourBasicData> _tableFourBasicData,
+            ObservableList<TableFiveBasicData> _tableFiveBasicData) {
         super(viewFactory, fxmlName);
         this._tableOneBasicData = _tableOneBasicData;
         this._tableTwoBasicData = _tableTwoBasicData;
         this._tableThreeBasicData = _tableThreeBasicData;
         this._tableFourBasicData = _tableFourBasicData;
+        this._tableFiveBasicData=_tableFiveBasicData;
     }
 
     @FXML
@@ -363,7 +373,7 @@ public class ConfigBasicDataController extends BaseController implements Initial
     
     @FXML
     void onAddTableFourBasicData(ActionEvent event) {
-        if (tableFourBasicData.getItems().size() <8) {
+        if (tableFourBasicData.getItems().isEmpty()) {
             _baseController = new TableFourConfigBasicDataController(
                     viewFactory,
                     "form/configbasicdata/TableFourConfigBasicData.fxml",
@@ -377,7 +387,7 @@ public class ConfigBasicDataController extends BaseController implements Initial
         } else {
             viewFactory.showAlertValidation((Stage) tableFourBasicData.getScene().getWindow(),
                         "TABLE 4: //eNodeB function",
-                        "Solo se permite agregar 8 filas");
+                        "Solo se permite agregar 1 filas");
         }
     }
     @FXML
@@ -437,6 +447,81 @@ public class ConfigBasicDataController extends BaseController implements Initial
         });
     }
     
+    @FXML
+    void onAddTableFiveBasicData(ActionEvent event) {
+        if (tableFiveBasicData.getItems().isEmpty()) {
+            _baseController = new TableFiveConfigBasicDataController(
+                    viewFactory,
+                    "form/configbasicdata/TableFiveConfigBasicData.fxml",
+                    tableFiveBasicData,
+                    mmlPreviewTableFiveBasicData,
+                    false);
+            viewFactory.showModalStage(
+                    (Stage) tableFiveBasicData.getScene().getWindow(),
+                    _baseController,
+                    "TABLE 5: //NE maintenance mode");
+        } else {
+            viewFactory.showAlertValidation((Stage) tableFiveBasicData.getScene().getWindow(),
+                        "TABLE 5: //NE maintenance mode",
+                        "Solo se permite agregar 1 filas");
+        }
+    }
+    @FXML
+    void onDeleteTableFiveBasicData(ActionEvent event) {
+        if (!tableFiveBasicData.getSelectionModel().isEmpty()) {
+            tableFiveBasicData.getItems().remove(
+                    tableFiveBasicData.getSelectionModel().getSelectedItem()
+            );
+        } else {
+            viewFactory.showAlertValidation((Stage) tableFiveBasicData.getScene().getWindow(),
+                    "TABLE 5: //NE maintenance mode",
+                    "Seleccione una fila ");
+        }
+    }
+    @FXML
+    void onUpdateTableFiveBasicData(ActionEvent event) {
+        if (!tableFiveBasicData.getSelectionModel().isEmpty()) {
+            _baseController = new TableFiveConfigBasicDataController(
+                    viewFactory,
+                    "form/configbasicdata/TableFiveConfigBasicData.fxml",
+                    tableFiveBasicData,
+                    mmlPreviewTableFiveBasicData,
+                    true);
+            viewFactory.showModalStage(
+                    (Stage) tableFiveBasicData.getScene().getWindow(),
+                    _baseController,
+                     "TABLE 5: //NE maintenance mode");
+        } else {
+            viewFactory.showAlertValidation((Stage) tableFiveBasicData.getScene().getWindow(),
+                     "TABLE 5: //NE maintenance mode",
+                    "Seleccione una fila ");
+        }
+    }
+    private void setTextAreaTableFive() {
+        mmlPreviewTableFiveBasicData.clear();
+        tableFiveBasicData.getItems().forEach((basicData) -> {
+            TableFiveBasicData t = (TableFiveBasicData) basicData;
+            if (t.getParameterId().equals("REFERENCE")) {
+                mmlPreviewTableFiveBasicData.appendText("//\n");
+            }
+            if (t.getParameterId().equals("CREATE")) {
+                mmlPreviewTableFiveBasicData.appendText(""
+                        + "SET MNTMODE:MNTMODE=" + t.getmMode() + ","
+                        + "ST=" + t.getSt() + ","
+                        + "ET=" + t.getEt() + ","
+                        + "MMSETREMARK=" + t.getMmSetRemark() + ";"
+                );
+               
+            }
+
+            /*if (t.getParameterId().equals("DELETE")) {
+                mmlPreviewTableFiveBasicData.appendText(
+                        "RMV ENODEBFUNCTION:ENODEBFUNCTIONNAME=\"" + t.geteNodeBFunctionName()+ "\";\n"
+                );
+            }*/
+
+        });
+    }
     /**
      * Initializes the controller class.
      */
@@ -683,25 +768,25 @@ public class ConfigBasicDataController extends BaseController implements Initial
         TableColumn eNodeBFunctionNameCol = new TableColumn("eNodeB Function Name");
         eNodeBFunctionNameCol.setMinWidth(200);
         eNodeBFunctionNameCol.setCellValueFactory(
-                new PropertyValueFactory<TableTwoBasicData, String>("eNodeBFunctionName"));
+                new PropertyValueFactory<TableFourBasicData, String>("eNodeBFunctionName"));
         eNodeBFunctionNameCol.setSortType(TableColumn.SortType.DESCENDING);
 
         TableColumn appRefCol = new TableColumn("Application Reference");
         appRefCol.setMinWidth(200);
         appRefCol.setCellValueFactory(
-                new PropertyValueFactory<TableTwoBasicData, String>("appRef"));
+                new PropertyValueFactory<TableFourBasicData, String>("appRef"));
         appRefCol.setSortType(TableColumn.SortType.DESCENDING);
 
         TableColumn enodebIdCol = new TableColumn("EnodeB ID");
         enodebIdCol.setMinWidth(200);
         enodebIdCol.setCellValueFactory(
-                new PropertyValueFactory<TableTwoBasicData, String>("enodebId"));
+                new PropertyValueFactory<TableFourBasicData, String>("enodebId"));
         enodebIdCol.setSortType(TableColumn.SortType.DESCENDING);
 
         TableColumn userLabelCol4 = new TableColumn("User Label");
         userLabelCol4.setMinWidth(200);
         userLabelCol4.setCellValueFactory(
-                new PropertyValueFactory<TableTwoBasicData, String>("userLabel"));
+                new PropertyValueFactory<TableFourBasicData, String>("userLabel"));
         userLabelCol4.setSortType(TableColumn.SortType.DESCENDING);
 
         tableFourBasicData.setItems(_tableFourBasicData);
@@ -712,6 +797,45 @@ public class ConfigBasicDataController extends BaseController implements Initial
                 nodeIdCol,
                 userLabelCol4);
         setTextAreaTableFour();
+        
+        //Table Five Basic Data
+        TableColumn parameterIdCol5 = new TableColumn("Parameter Name");
+        parameterIdCol5.setMinWidth(200);
+        parameterIdCol5.setCellValueFactory(
+                new PropertyValueFactory<TableFiveBasicData, String>("parameterId"));
+        parameterIdCol5.setSortType(TableColumn.SortType.DESCENDING);
+
+        TableColumn mModeCol2 = new TableColumn("Maintenance Mode");
+        mModeCol2.setMinWidth(200);
+        mModeCol2.setCellValueFactory(
+                new PropertyValueFactory<TableFiveBasicData, String>("mMode"));
+        mModeCol2.setSortType(TableColumn.SortType.DESCENDING);
+
+        TableColumn stCol = new TableColumn("Start Time of Status Setting");
+        stCol.setMinWidth(200);
+        stCol.setCellValueFactory(
+                new PropertyValueFactory<TableFiveBasicData, String>("st"));
+        stCol.setSortType(TableColumn.SortType.DESCENDING);
+
+        TableColumn etCol = new TableColumn("End Time of Status Setting");
+        etCol.setMinWidth(200);
+        etCol.setCellValueFactory(
+                new PropertyValueFactory<TableTwoBasicData, String>("et"));
+        etCol.setSortType(TableColumn.SortType.DESCENDING);
+
+        TableColumn mmSetRemark5 = new TableColumn("Maintenance Mode Setting Remark");
+        mmSetRemark5.setMinWidth(200);
+        mmSetRemark5.setCellValueFactory(
+                new PropertyValueFactory<TableFiveBasicData, String>("mmSetRemark"));
+        mmSetRemark5.setSortType(TableColumn.SortType.DESCENDING);
+
+        tableFiveBasicData.setItems(_tableFiveBasicData);
+        tableFiveBasicData.getColumns().addAll(parameterIdCol5,
+                mModeCol2,
+                stCol,
+                etCol,
+                mmSetRemark5);
+        setTextAreaTableFive();
     }
 
 }
