@@ -178,6 +178,69 @@
                         <TextArea fx:id="mmlPreviewTableFiveBasicData" editable="false" prefHeight="90.0" />
                      </children>
                   </VBox>
+                  <Separator prefWidth="200.0" />
+                  <VBox alignment="TOP_CENTER" spacing="5.0">
+                     <children>
+                        <Label text="TABLE 6-7: //Operator" textFill="#00ab1f" />
+                        <Label text="//Add CN Operator (ADD CNOPERATOR)" textFill="#00ab1f" />
+                        <HBox spacing="10.0">
+                           <children>
+                              <MenuButton minWidth="-Infinity" mnemonicParsing="false" prefWidth="103.0" text="Opciones">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" onAction="#onAddTableSixBasicData" text="Agregar" />
+                                    <MenuItem mnemonicParsing="false" onAction="#onUpdateTableSixBasicData" text="Actualizar" />
+                                    <MenuItem mnemonicParsing="false" onAction="#onDeleteTableSixBasicData" text="Eliminar" />
+                                 </items>
+                              </MenuButton>
+                              <ScrollPane fitToHeight="true" minHeight="-Infinity" prefHeight="90.0" HBox.hgrow="ALWAYS">
+                                 <content>
+                                    <AnchorPane>
+                                       <children>
+                                          <TableView fx:id="tableSixBasicData" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <Label text="MML comand //Add CN Operator (ADD CNOPERATOR)" />
+                        <TextArea fx:id="mmlPreviewTableSixBasicData" editable="false" prefHeight="90.0" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" spacing="5.0">
+                     <children>
+                        <Label text="//Add Tracking Area Configuration for CN Operator (ADD CNOPERATORTA)" textFill="#00ab1f" />
+                        <HBox spacing="10.0">
+                           <children>
+                              <MenuButton minWidth="-Infinity" mnemonicParsing="false" prefWidth="103.0" text="Opciones">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" onAction="#onAddTableSevenBasicData" text="Agregar" />
+                                    <MenuItem mnemonicParsing="false" onAction="#onUpdateTableSevenBasicData" text="Actualizar" />
+                                    <MenuItem mnemonicParsing="false" onAction="#onDeleteTableSevenBasicData" text="Eliminar" />
+                                 </items>
+                              </MenuButton>
+                              <ScrollPane fitToHeight="true" minHeight="-Infinity" prefHeight="90.0" HBox.hgrow="ALWAYS">
+                                 <content>
+                                    <AnchorPane>
+                                       <children>
+                                          <TableView fx:id="tableSevenBasicData" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <Label text="MML comand //Add Tracking Area Configuration for CN Operator (ADD CNOPERATORTA)" />
+                        <TextArea fx:id="mmlPreviewTableSevenBasicData" editable="false" prefHeight="90.0" />
+                     </children>
+                  </VBox>
+                  <Separator prefWidth="200.0" />
                </children>
             </VBox>
          </children>

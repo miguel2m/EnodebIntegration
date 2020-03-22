@@ -17,6 +17,8 @@ import javafx.stage.Stage;
 import model.configbasicdata.TableFiveBasicData;
 import model.configbasicdata.TableFourBasicData;
 import model.configbasicdata.TableOneBasicData;
+import model.configbasicdata.TableSevenBasicData;
+import model.configbasicdata.TableSixBasicData;
 import model.configbasicdata.TableThreeBasicData;
 import model.configbasicdata.TableTwoBasicData;
 import model.initiallyconfig.TableOneConfigEnodeb;
@@ -43,6 +45,8 @@ public class MainViewController extends BaseController implements Initializable 
     private ObservableList<TableThreeBasicData> _tableThreeBasicData = FXCollections.observableArrayList();
     private ObservableList<TableFourBasicData> _tableFourBasicData = FXCollections.observableArrayList();
     private ObservableList<TableFiveBasicData> _tableFiveBasicData = FXCollections.observableArrayList();
+        private ObservableList<TableSixBasicData> _tableSixBasicData = FXCollections.observableArrayList();
+    private ObservableList<TableSevenBasicData> _tableSevenBasicData = FXCollections.observableArrayList();
     @FXML
     private BorderPane mainBorderPanel;
 
@@ -73,7 +77,9 @@ public class MainViewController extends BaseController implements Initializable 
                 _tableTwoBasicData,
                 _tableThreeBasicData,
                 _tableFourBasicData,
-                _tableFiveBasicData
+                _tableFiveBasicData,
+                _tableSixBasicData,
+                _tableSevenBasicData
         );
         viewFactory.addStageCenterBorderPanel(mainBorderPanel, _baseController);
     }

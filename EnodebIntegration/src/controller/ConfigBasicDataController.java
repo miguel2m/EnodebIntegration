@@ -8,6 +8,8 @@ package controller;
 import controller.form.configbasicdata.TableFiveConfigBasicDataController;
 import controller.form.configbasicdata.TableFourConfigBasicDataController;
 import controller.form.configbasicdata.TableOneConfigBasicDataController;
+import controller.form.configbasicdata.TableSevenConfigBasicDataController;
+import controller.form.configbasicdata.TableSixConfigBasicDataController;
 import controller.form.configbasicdata.TableThreeConfigBasicDataController;
 import controller.form.configbasicdata.TableTwoConfigBasicDataController;
 import java.net.URL;
@@ -25,6 +27,8 @@ import javafx.stage.Stage;
 import model.configbasicdata.TableFiveBasicData;
 import model.configbasicdata.TableFourBasicData;
 import model.configbasicdata.TableOneBasicData;
+import model.configbasicdata.TableSevenBasicData;
+import model.configbasicdata.TableSixBasicData;
 import model.configbasicdata.TableThreeBasicData;
 import model.configbasicdata.TableTwoBasicData;
 import view.ViewFactory;
@@ -41,6 +45,8 @@ public class ConfigBasicDataController extends BaseController implements Initial
     private ObservableList<TableThreeBasicData> _tableThreeBasicData = FXCollections.observableArrayList();
     private ObservableList<TableFourBasicData> _tableFourBasicData = FXCollections.observableArrayList();
     private ObservableList<TableFiveBasicData> _tableFiveBasicData = FXCollections.observableArrayList();
+    private ObservableList<TableSixBasicData> _tableSixBasicData = FXCollections.observableArrayList();
+    private ObservableList<TableSevenBasicData> _tableSevenBasicData = FXCollections.observableArrayList();
     private BaseController _baseController;
     @FXML
     private TableView tableOneBasicData;
@@ -71,19 +77,34 @@ public class ConfigBasicDataController extends BaseController implements Initial
     @FXML
     private TextArea mmlPreviewTableFiveBasicData;
 
+    @FXML
+    private TableView tableSixBasicData;
 
+    @FXML
+    private TextArea mmlPreviewTableSixBasicData;
+
+    @FXML
+    private TableView tableSevenBasicData;
+
+    @FXML
+    private TextArea mmlPreviewTableSevenBasicData;
+    
     public ConfigBasicDataController(ViewFactory viewFactory, String fxmlName,
             ObservableList<TableOneBasicData> _tableOneBasicData,
             ObservableList<TableTwoBasicData> _tableTwoBasicData,
             ObservableList<TableThreeBasicData> _tableThreeBasicData,
             ObservableList<TableFourBasicData> _tableFourBasicData,
-            ObservableList<TableFiveBasicData> _tableFiveBasicData) {
+            ObservableList<TableFiveBasicData> _tableFiveBasicData,
+            ObservableList<TableSixBasicData> _tableSixBasicData,
+            ObservableList<TableSevenBasicData> _tableSevenBasicData) {
         super(viewFactory, fxmlName);
         this._tableOneBasicData = _tableOneBasicData;
         this._tableTwoBasicData = _tableTwoBasicData;
         this._tableThreeBasicData = _tableThreeBasicData;
         this._tableFourBasicData = _tableFourBasicData;
         this._tableFiveBasicData=_tableFiveBasicData;
+        this._tableSixBasicData=_tableSixBasicData;
+        this._tableSevenBasicData=_tableSevenBasicData;
     }
 
     @FXML
@@ -522,6 +543,162 @@ public class ConfigBasicDataController extends BaseController implements Initial
 
         });
     }
+    
+    @FXML
+    void onAddTableSevenBasicData(ActionEvent event) {
+        if (tableSevenBasicData.getItems().isEmpty()) {
+            _baseController = new TableSevenConfigBasicDataController(
+                    viewFactory,
+                    "form/configbasicdata/TableSevenConfigBasicData.fxml",
+                    tableSevenBasicData,
+                    mmlPreviewTableSevenBasicData,
+                    false);
+            viewFactory.showModalStage(
+                    (Stage) tableSevenBasicData.getScene().getWindow(),
+                    _baseController,
+                    "TABLE 7: //Add Tracking Area Configuration for CN Operator (ADD CNOPERATORTA)");
+        } else {
+            viewFactory.showAlertValidation((Stage) tableFiveBasicData.getScene().getWindow(),
+                        "TABLE 7: //Add Tracking Area Configuration for CN Operator (ADD CNOPERATORTA)",
+                        "Solo se permite agregar 1 filas");
+        }
+    }
+
+    @FXML
+    void onAddTableSixBasicData(ActionEvent event) {
+        if (tableSixBasicData.getItems().isEmpty()) {
+            _baseController = new TableSixConfigBasicDataController(
+                    viewFactory,
+                    "form/configbasicdata/TableSixConfigBasicData.fxml",
+                    tableSixBasicData,
+                    mmlPreviewTableSixBasicData,
+                    false);
+            viewFactory.showModalStage(
+                    (Stage) tableSixBasicData.getScene().getWindow(),
+                    _baseController,
+                    "TABLE 6: //Add CN Operator (ADD CNOPERATOR)");
+        } else {
+            viewFactory.showAlertValidation((Stage) tableFiveBasicData.getScene().getWindow(),
+                        "TABLE 6: //Add CN Operator (ADD CNOPERATOR)",
+                        "Solo se permite agregar 1 filas");
+        }
+    }
+    @FXML
+    void onDeleteTableSevenBasicData(ActionEvent event) {
+        if (!tableSevenBasicData.getSelectionModel().isEmpty()) {
+            tableSevenBasicData.getItems().remove(
+                    tableSevenBasicData.getSelectionModel().getSelectedItem()
+            );
+        } else {
+            viewFactory.showAlertValidation((Stage) tableSevenBasicData.getScene().getWindow(),
+                    "TABLE 7: //Add Tracking Area Configuration for CN Operator (ADD CNOPERATORTA)",
+                    "Seleccione una fila ");
+        }
+    }
+
+    @FXML
+    void onDeleteTableSixBasicData(ActionEvent event) {
+        if (!tableSixBasicData.getSelectionModel().isEmpty()) {
+            tableSixBasicData.getItems().remove(
+                    tableSixBasicData.getSelectionModel().getSelectedItem()
+            );
+        } else {
+            viewFactory.showAlertValidation((Stage) tableSixBasicData.getScene().getWindow(),
+                    "TABLE 6: //Add CN Operator (ADD CNOPERATOR)",
+                    "Seleccione una fila ");
+        }
+    }
+    @FXML
+    void onUpdateTableSevenBasicData(ActionEvent event) {
+        if (!tableSevenBasicData.getSelectionModel().isEmpty()) {
+            _baseController = new TableSevenConfigBasicDataController(
+                    viewFactory,
+                    "form/configbasicdata/TableSevenConfigBasicData.fxml",
+                    tableSevenBasicData,
+                    mmlPreviewTableSevenBasicData,
+                    true);
+            viewFactory.showModalStage(
+                    (Stage) tableSevenBasicData.getScene().getWindow(),
+                    _baseController,
+                     "TABLE 7: //Add Tracking Area Configuration for CN Operator (ADD CNOPERATORTA)");
+        } else {
+            viewFactory.showAlertValidation((Stage) tableSevenBasicData.getScene().getWindow(),
+                     "TABLE 7: //Add Tracking Area Configuration for CN Operator (ADD CNOPERATORTA)",
+                    "Seleccione una fila ");
+        }
+    }
+
+    @FXML
+    void onUpdateTableSixBasicData(ActionEvent event) {
+        if (!tableSixBasicData.getSelectionModel().isEmpty()) {
+            _baseController = new TableSixConfigBasicDataController(
+                    viewFactory,
+                    "form/configbasicdata/TableSixConfigBasicData.fxml",
+                    tableSixBasicData,
+                    mmlPreviewTableSixBasicData,
+                    true);
+            viewFactory.showModalStage(
+                    (Stage) tableSixBasicData.getScene().getWindow(),
+                    _baseController,
+                     "TABLE 6: //Add CN Operator (ADD CNOPERATOR)");
+        } else {
+            viewFactory.showAlertValidation((Stage) tableSixBasicData.getScene().getWindow(),
+                    "TABLE 6: //Add CN Operator (ADD CNOPERATOR)",
+                    "Seleccione una fila ");
+        }
+    }
+    
+    private void setTextAreaTableSix() {
+        mmlPreviewTableSixBasicData.clear();
+        tableSixBasicData.getItems().forEach((basicData) -> {
+            TableSixBasicData t = (TableSixBasicData) basicData;
+            if (t.getParameterId().equals("REFERENCE")) {
+                mmlPreviewTableSixBasicData.appendText("//\n");
+            }
+            if (t.getParameterId().equals("CREATE")) {
+                mmlPreviewTableSixBasicData.appendText(""
+                        + "ADD CNOPERATOR:CnOperatorId=" + t.getCnOperatorId() + ","
+                        + "CnOperatorName=\"" + t.getCnOperatorName() + "\","
+                        + "CnOperatorType=\"" + t.getCnOperatorType() + "\","
+                        + "MCC=\"" + t.getMcc() + "\","
+                        + "MNC=\"" + t.getMnc() + "\";"
+                );
+               
+            }
+
+            /*if (t.getParameterId().equals("DELETE")) {
+                mmlPreviewTableFiveBasicData.appendText(
+                        "RMV ENODEBFUNCTION:ENODEBFUNCTIONNAME=\"" + t.geteNodeBFunctionName()+ "\";\n"
+                );
+            }*/
+
+        });
+    }
+    private void setTextAreaTableSeven() {
+        mmlPreviewTableSevenBasicData.clear();
+        tableSevenBasicData.getItems().forEach((basicData) -> {
+            TableSevenBasicData t = (TableSevenBasicData) basicData;
+            if (t.getParameterId().equals("REFERENCE")) {
+                mmlPreviewTableSevenBasicData.appendText("//\n");
+            }
+            if (t.getParameterId().equals("CREATE")) {
+                mmlPreviewTableSevenBasicData.appendText(""
+                        + "ADD CNOPERATORTA:TrackingAreaId=" + t.getTrackingAreaId() + ","
+                        + "CnOperatorId=" + t.getCnOperatorId() + ","
+                        + "Tac=" + t.getTac() + ";"
+                );
+               
+            }
+
+            /*if (t.getParameterId().equals("DELETE")) {
+                mmlPreviewTableFiveBasicData.appendText(
+                        "RMV ENODEBFUNCTION:ENODEBFUNCTIONNAME=\"" + t.geteNodeBFunctionName()+ "\";\n"
+                );
+            }*/
+
+        });
+    }
+    
     /**
      * Initializes the controller class.
      */
@@ -836,6 +1013,85 @@ public class ConfigBasicDataController extends BaseController implements Initial
                 etCol,
                 mmSetRemark5);
         setTextAreaTableFive();
+        
+        //Table SIX Basic Data
+        TableColumn parameterIdCol6 = new TableColumn("Parameter Name");
+        parameterIdCol6.setMinWidth(200);
+        parameterIdCol6.setCellValueFactory(
+                new PropertyValueFactory<TableSixBasicData, String>("parameterId"));
+        parameterIdCol6.setSortType(TableColumn.SortType.DESCENDING);
+
+        TableColumn cnOperatorIdCol = new TableColumn("CN Operator ID");
+        cnOperatorIdCol.setMinWidth(200);
+        cnOperatorIdCol.setCellValueFactory(
+                new PropertyValueFactory<TableSixBasicData, String>("cnOperatorId"));
+        cnOperatorIdCol.setSortType(TableColumn.SortType.DESCENDING);
+
+        TableColumn cnOperatorNameCol = new TableColumn("CN Operator Name");
+        cnOperatorNameCol.setMinWidth(200);
+        cnOperatorNameCol.setCellValueFactory(
+                new PropertyValueFactory<TableSixBasicData, String>("cnOperatorName"));
+        cnOperatorNameCol.setSortType(TableColumn.SortType.DESCENDING);
+
+        TableColumn cnOperatorTypeCol = new TableColumn("CN Operator Type");
+        cnOperatorTypeCol.setMinWidth(200);
+        cnOperatorTypeCol.setCellValueFactory(
+                new PropertyValueFactory<TableSixBasicData, String>("cnOperatorType"));
+        cnOperatorTypeCol.setSortType(TableColumn.SortType.DESCENDING);
+
+        TableColumn mccCol = new TableColumn("Mobile Country Code");
+        mccCol.setMinWidth(200);
+        mccCol.setCellValueFactory(
+                new PropertyValueFactory<TableSixBasicData, String>("mcc"));
+        mccCol.setSortType(TableColumn.SortType.DESCENDING);
+        
+        TableColumn mncCol = new TableColumn("Mobile Network Code");
+        mncCol.setMinWidth(200);
+        mncCol.setCellValueFactory(
+                new PropertyValueFactory<TableSixBasicData, String>("mnc"));
+        mncCol.setSortType(TableColumn.SortType.DESCENDING);
+
+        tableSixBasicData.setItems(_tableSixBasicData);
+        tableSixBasicData.getColumns().addAll(parameterIdCol6,
+                cnOperatorIdCol,
+                cnOperatorNameCol,
+                cnOperatorTypeCol,
+                mccCol,
+                mncCol);
+        setTextAreaTableSix();
+        
+        //Table Seven Basic Data
+        TableColumn parameterIdCol7 = new TableColumn("Parameter Name");
+        parameterIdCol7.setMinWidth(200);
+        parameterIdCol7.setCellValueFactory(
+                new PropertyValueFactory<TableSevenBasicData, String>("parameterId"));
+        parameterIdCol7.setSortType(TableColumn.SortType.DESCENDING);
+
+        TableColumn trackingAreaIdCol = new TableColumn("Local Tracking Area ID");
+        trackingAreaIdCol.setMinWidth(200);
+        trackingAreaIdCol.setCellValueFactory(
+                new PropertyValueFactory<TableSevenBasicData, String>("trackingAreaId"));
+        trackingAreaIdCol.setSortType(TableColumn.SortType.DESCENDING);
+
+        TableColumn cnOperatorIdCol7 = new TableColumn("CN Operator ID");
+        cnOperatorIdCol7.setMinWidth(200);
+        cnOperatorIdCol7.setCellValueFactory(
+                new PropertyValueFactory<TableSevenBasicData, String>("cnOperatorId"));
+        cnOperatorIdCol7.setSortType(TableColumn.SortType.DESCENDING);
+
+        TableColumn tacCol = new TableColumn("Tracking Area Code");
+        tacCol.setMinWidth(200);
+        tacCol.setCellValueFactory(
+                new PropertyValueFactory<TableSevenBasicData, String>("tac"));
+        tacCol.setSortType(TableColumn.SortType.DESCENDING);
+
+        
+        tableSevenBasicData.setItems(_tableSevenBasicData);
+        tableSevenBasicData.getColumns().addAll(parameterIdCol7,
+                trackingAreaIdCol,
+                cnOperatorIdCol7,
+                tacCol);
+        setTextAreaTableSeven();
     }
 
 }
