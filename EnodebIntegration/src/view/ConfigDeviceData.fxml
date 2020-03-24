@@ -85,6 +85,70 @@
                      </children>
                   </VBox>
                   <Separator prefWidth="200.0" />
+                  <VBox alignment="TOP_CENTER" spacing="5.0">
+                     <children>
+                        <Label text="TABLE 3: //Boards in the BBU3900 subrack" textFill="#00ab1f" />
+                        <HBox spacing="10.0">
+                           <children>
+                              <MenuButton minWidth="-Infinity" mnemonicParsing="false" prefWidth="103.0" text="Opciones">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" onAction="#onAddTableThreeDeviceData" text="Agregar" />
+                                    <MenuItem mnemonicParsing="false" onAction="#onUpdateTableThreeDeviceData" text="Actualizar" />
+                                    <MenuItem mnemonicParsing="false" onAction="#onDeleteTableThreeDeviceData" text="Eliminar" />
+                                    <MenuItem mnemonicParsing="false" onAction="#onDuplicarTableThreeDeviceData" text="Duplicar" />
+                                 </items>
+                              </MenuButton>
+                              <ScrollPane fitToHeight="true" minHeight="-Infinity" prefHeight="150.0" HBox.hgrow="ALWAYS">
+                                 <content>
+                                    <AnchorPane>
+                                       <children>
+                                          <TableView fx:id="tableThreeDeviceData" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <Label text="MML comand //Add Board (ADD BRD)" />
+                        <TextArea fx:id="mmlPreviewTableThreeDeviceData" editable="false" maxHeight="150.0" minHeight="-Infinity" prefHeight="150.0" VBox.vgrow="ALWAYS" />
+                     </children>
+                  </VBox>
+                  <Separator prefWidth="200.0" />
+                  <VBox alignment="TOP_CENTER" spacing="5.0">
+                     <children>
+                        <Label text="//RF unit" textFill="#00ab1f" />
+                        <Label text="TABLE 4: //Add RRU Chain/Ring (ADD RRUCHAIN)" textFill="#00ab1f" />
+                        <HBox spacing="10.0">
+                           <children>
+                              <MenuButton minWidth="-Infinity" mnemonicParsing="false" prefWidth="103.0" text="Opciones">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" onAction="#onAddTableFourDeviceData" text="Agregar" />
+                                    <MenuItem mnemonicParsing="false" onAction="#onUpdateTableFourDeviceData" text="Actualizar" />
+                                    <MenuItem mnemonicParsing="false" onAction="#onDeleteTableFourDeviceData" text="Eliminar" />
+                                    <MenuItem mnemonicParsing="false" onAction="#onDuplicarTableFourDeviceData" text="Duplicar" />
+                                 </items>
+                              </MenuButton>
+                              <ScrollPane fitToHeight="true" minHeight="-Infinity" prefHeight="150.0" HBox.hgrow="ALWAYS">
+                                 <content>
+                                    <AnchorPane>
+                                       <children>
+                                          <TableView fx:id="tableFourDeviceData" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <Label text="MML comand  //RRU/RFU" />
+                        <TextArea fx:id="mmlPreviewTableFourDeviceData" editable="false" maxHeight="150.0" minHeight="-Infinity" prefHeight="150.0" VBox.vgrow="ALWAYS" />
+                     </children>
+                  </VBox>
                </children>
             </VBox>
          </children>

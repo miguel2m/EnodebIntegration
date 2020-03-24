@@ -21,7 +21,9 @@ import model.configbasicdata.TableSevenBasicData;
 import model.configbasicdata.TableSixBasicData;
 import model.configbasicdata.TableThreeBasicData;
 import model.configbasicdata.TableTwoBasicData;
+import model.configdevicedata.TableFourDeviceData;
 import model.configdevicedata.TableOneDeviceData;
+import model.configdevicedata.TableThreeDeviceData;
 import model.configdevicedata.TableTwoDeviceData;
 import model.initiallyconfig.TableOneConfigEnodeb;
 import model.initiallyconfig.TableThreeConfigEnodeb;
@@ -53,6 +55,9 @@ public class MainViewController extends BaseController implements Initializable 
     //Config Device Data
     private ObservableList<TableOneDeviceData> _tableOneDeviceData = FXCollections.observableArrayList();
     private ObservableList<TableTwoDeviceData> _tableTwoDeviceData = FXCollections.observableArrayList();
+    private ObservableList<TableThreeDeviceData> _tableThreeDeviceData = FXCollections.observableArrayList();
+    private ObservableList<TableFourDeviceData> _tableFourDeviceData = FXCollections.observableArrayList();
+    
     @FXML
     private BorderPane mainBorderPanel;
 
@@ -96,7 +101,9 @@ public class MainViewController extends BaseController implements Initializable 
                 viewFactory,
                 "ConfigDeviceData.fxml",
                 _tableOneDeviceData,
-                _tableTwoDeviceData
+                _tableTwoDeviceData,
+                _tableThreeDeviceData,
+                _tableFourDeviceData
         );
         viewFactory.addStageCenterBorderPanel(mainBorderPanel, _baseController);
 

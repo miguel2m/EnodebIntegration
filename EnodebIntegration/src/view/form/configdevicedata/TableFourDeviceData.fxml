@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ScrollPane fitToWidth="true" layoutX="90.0" layoutY="90.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <content>
+            <AnchorPane>
+               <children>
+                  <GridPane alignment="TOP_CENTER" hgap="10.0" vgap="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <children>
+                        <Label text="Parameter ID" />
+                        <Label text="Chain No. (RNC)" GridPane.rowIndex="1" />
+                        <Label text="Topo Type (TT)" GridPane.rowIndex="2" />
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="14">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#onTableFourConfigDeviceData" text="Aceptar" textFill="#005aae" />
+                              <Button mnemonicParsing="false" onAction="#onCancelTableFourConfigDeviceData" text="Cancelar" textFill="#fc0000" />
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <TextField fx:id="rncTableFourConfigDeviceData" promptText="Chain No. (RNC)" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="ttTableFourConfigDeviceData" promptText="Topo Type (TT)" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <ComboBox fx:id="parameterIdTableFourConfigDeviceData" prefWidth="150.0" GridPane.columnIndex="1" />
+                        <Label text="Backup Mode" GridPane.rowIndex="3" />
+                        <TextField fx:id="bmTableFourConfigDeviceData" promptText="Backup Mode" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label text="Access Type" GridPane.rowIndex="4" />
+                        <TextField fx:id="atTableFourConfigDeviceData" promptText="Access Type" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label text="Head Cabinet No." GridPane.rowIndex="5" />
+                        <Label text="Head Subrack No." GridPane.rowIndex="6" />
+                        <Label text="Head Slot No." GridPane.rowIndex="7" />
+                        <Label text="Head Port No." GridPane.rowIndex="8" />
+                        <Label text="Tail Cabinet No." GridPane.rowIndex="9" />
+                        <Label text="Tail Subrack No." GridPane.rowIndex="10" />
+                        <TextField fx:id="hcnTableFourConfigDeviceData" promptText="Head Cabinet No." GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <TextField fx:id="hsrnTableFourConfigDeviceData" promptText="Head Subrack No." GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <TextField fx:id="hsnTableFourConfigDeviceData" promptText="Head Slot No." GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                        <TextField fx:id="hpnTableFourConfigDeviceData" promptText="Head Port No." GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                        <TextField fx:id="tcnTableFourConfigDeviceData" promptText="Tail Cabinet No." GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                        <TextField fx:id="tsrnTableFourConfigDeviceData" promptText="Tail Subrack No." GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                        <Label text="Tail Slot No." GridPane.rowIndex="11" />
+                        <Label text="Tail Port No." GridPane.rowIndex="12" />
+                        <Label text="CPRI Line Rate" GridPane.rowIndex="13" />
+                        <TextField fx:id="tsnTableFourConfigDeviceData" promptText="Tail Slot No." GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                        <TextField fx:id="tpnTableFourConfigDeviceData" promptText="Tail Port No." GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                        <TextField fx:id="crTableFourConfigDeviceData" promptText="CPRI Line Rate" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
