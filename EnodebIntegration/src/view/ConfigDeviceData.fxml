@@ -2,8 +2,14 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
 <ScrollPane fitToHeight="true" fitToWidth="true" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
@@ -16,6 +22,69 @@
                </padding>
                <children>
                   <Label text="Config Device Data" />
+                  <Separator prefWidth="200.0" />
+                  <Label text="//Cabinet and BBU3900 device data" />
+                  <VBox alignment="TOP_CENTER" spacing="5.0">
+                     <children>
+                        <Label text="TABLE 1: //Add Cabinet (ADD CABINET)" textFill="#00ab1f" />
+                        <HBox spacing="10.0">
+                           <children>
+                              <MenuButton minWidth="-Infinity" mnemonicParsing="false" prefWidth="103.0" text="Opciones">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" onAction="#onAddTableOneDeviceData" text="Agregar" />
+                                    <MenuItem mnemonicParsing="false" onAction="#onUpdateTableOneDeviceData" text="Actualizar" />
+                                    <MenuItem mnemonicParsing="false" onAction="#onDeleteTableOneDeviceData" text="Eliminar" />
+                                 </items>
+                              </MenuButton>
+                              <ScrollPane fitToHeight="true" minHeight="-Infinity" prefHeight="90.0" HBox.hgrow="ALWAYS">
+                                 <content>
+                                    <AnchorPane>
+                                       <children>
+                                          <TableView fx:id="tableOneDeviceData" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <Label text="MML comand //Add Cabinet (ADD CABINET)" />
+                        <TextArea fx:id="mmlPreviewTableOneDeviceData" editable="false" prefHeight="90.0" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" spacing="5.0">
+                     <children>
+                        <Label text="TABLE 2: //Add Subrack (ADD SUBRACK)" textFill="#00ab1f" />
+                        <HBox spacing="10.0">
+                           <children>
+                              <MenuButton minWidth="-Infinity" mnemonicParsing="false" prefWidth="103.0" text="Opciones">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" onAction="#onAddTableTwoDeviceData" text="Agregar" />
+                                    <MenuItem mnemonicParsing="false" onAction="#onUpdateTableTwoDeviceData" text="Actualizar" />
+                                    <MenuItem mnemonicParsing="false" onAction="#onDeleteTableTwoDeviceData" text="Eliminar" />
+                                 </items>
+                              </MenuButton>
+                              <ScrollPane fitToHeight="true" minHeight="-Infinity" prefHeight="90.0" HBox.hgrow="ALWAYS">
+                                 <content>
+                                    <AnchorPane>
+                                       <children>
+                                          <TableView fx:id="tableTwoDeviceData" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <Label text="MML comand //Add Subrack (ADD SUBRACK)" />
+                        <TextArea fx:id="mmlPreviewTableTwoDeviceData" editable="false" prefHeight="90.0" />
+                     </children>
+                  </VBox>
+                  <Separator prefWidth="200.0" />
                </children>
             </VBox>
          </children>
