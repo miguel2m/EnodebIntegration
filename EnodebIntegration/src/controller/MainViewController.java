@@ -5,6 +5,7 @@
  */
 package controller;
 
+import model.configdevicedata.TableFiveDeviceData;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -57,6 +58,7 @@ public class MainViewController extends BaseController implements Initializable 
     private ObservableList<TableTwoDeviceData> _tableTwoDeviceData = FXCollections.observableArrayList();
     private ObservableList<TableThreeDeviceData> _tableThreeDeviceData = FXCollections.observableArrayList();
     private ObservableList<TableFourDeviceData> _tableFourDeviceData = FXCollections.observableArrayList();
+    private ObservableList<TableFiveDeviceData> _tableFiveDeviceData = FXCollections.observableArrayList();
     
     @FXML
     private BorderPane mainBorderPanel;
@@ -103,7 +105,8 @@ public class MainViewController extends BaseController implements Initializable 
                 _tableOneDeviceData,
                 _tableTwoDeviceData,
                 _tableThreeDeviceData,
-                _tableFourDeviceData
+                _tableFourDeviceData,
+                _tableFiveDeviceData
         );
         viewFactory.addStageCenterBorderPanel(mainBorderPanel, _baseController);
 

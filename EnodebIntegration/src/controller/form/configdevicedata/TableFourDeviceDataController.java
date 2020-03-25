@@ -72,7 +72,8 @@ public class TableFourDeviceDataController extends BaseController implements Ini
 
     @FXML
     private TextField crTableFourConfigDeviceData;
-
+    
+    
     
     public TableFourDeviceDataController(ViewFactory viewFactory, String fxmlName,
             TableView tableFourDeviceData,
@@ -169,6 +170,9 @@ public class TableFourDeviceDataController extends BaseController implements Ini
         });
         
     }
+    
+    
+    
     /**
      * Initializes the controller class.
      */

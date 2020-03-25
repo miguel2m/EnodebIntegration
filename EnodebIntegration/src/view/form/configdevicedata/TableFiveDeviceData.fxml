@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="512.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
+   <children>
+      <ScrollPane fitToWidth="true" layoutY="83.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <content>
+            <AnchorPane>
+               <children>
+                  <GridPane alignment="TOP_CENTER" hgap="10.0" vgap="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <children>
+                        <Label text="Parameter ID" />
+                        <Label text="Cabinet No." GridPane.rowIndex="1" />
+                        <Label text="Subrack No." GridPane.rowIndex="2" />
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="21">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#onTableFiveConfigDeviceData" text="Aceptar" textFill="#005aae" />
+                              <Button mnemonicParsing="false" onAction="#onCancelTableFiveConfigDeviceData" text="Cancelar" textFill="#fc0000" />
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <TextField fx:id="crTableFiveConfigDeviceData" promptText="Cabinet No." GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="srnTableFiveConfigDeviceData" promptText="Subrack No." GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <ComboBox fx:id="parameterIdTableFiveConfigDeviceData" prefWidth="150.0" GridPane.columnIndex="1" />
+                        <Label text="Slot No." GridPane.rowIndex="3" />
+                        <TextField fx:id="snTableFiveConfigDeviceData" promptText="Slot No." GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label text="RRU Topo Position" GridPane.rowIndex="4" />
+                        <TextField fx:id="tpTableFiveConfigDeviceData" promptText="RRU Topo Position" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label text="RRU Chain No." GridPane.rowIndex="5" />
+                        <Label text="RRU Position" GridPane.rowIndex="6" />
+                        <Label text="RRU type" GridPane.rowIndex="7" />
+                        <Label text="RF Unit Working Mode" GridPane.rowIndex="8" />
+                        <Label text="RRU Name" GridPane.rowIndex="9" />
+                        <Label text="Number of RX channels" GridPane.rowIndex="10" />
+                        <TextField fx:id="rncTableFiveConfigDeviceData" promptText="RRU Chain No." GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <TextField fx:id="psTableFiveConfigDeviceData" promptText="RRU Position" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <TextField fx:id="rtTableFiveConfigDeviceData" promptText="RRU type" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                        <TextField fx:id="rsTableFiveConfigDeviceData" promptText="RF Unit Working Mode" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                        <TextField fx:id="rnTableFiveConfigDeviceData" promptText="RRU Name" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                        <TextField fx:id="rxnumTableFiveConfigDeviceData" promptText="Number of RX channels" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                        <Label text="Number of TX channels" GridPane.rowIndex="11" />
+                        <Label text="VSWR alarm post-processing switch" GridPane.rowIndex="12" />
+                        <Label text="VSWR alarm threshold" GridPane.rowIndex="14" />
+                        <TextField fx:id="txnumTableFiveConfigDeviceData" promptText="Number of TX channels" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                        <TextField fx:id="almprocswTableFiveConfigDeviceData" promptText="VSWR alarm post-processing switch" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                        <TextField fx:id="almthrhldTableFiveConfigDeviceData" promptText="VSWR alarm threshold" GridPane.columnIndex="1" GridPane.rowIndex="14" />
+                        <Label text="IfOffset" GridPane.rowIndex="15" />
+                        <Label text="RF Desensitivity" GridPane.rowIndex="16" />
+                        <Label text="Low Current Protect Switch" GridPane.rowIndex="17" />
+                        <Label text="ALD Reuse Flag" GridPane.rowIndex="18" />
+                        <Label text="RU Specification" GridPane.rowIndex="19" />
+                        <Label text="PA Efficiency Improvement Switch" GridPane.rowIndex="20" />
+                        <TextField fx:id="ifoffsetTableFiveConfigDeviceData" promptText="IfOffset" GridPane.columnIndex="1" GridPane.rowIndex="15" />
+                        <TextField fx:id="rfdsTableFiveConfigDeviceData" promptText="RF Desensitivity" GridPane.columnIndex="1" GridPane.rowIndex="16" />
+                        <TextField fx:id="lcpswTableFiveConfigDeviceData" promptText="Low Current Protect Switch" GridPane.columnIndex="1" GridPane.rowIndex="17" />
+                        <TextField fx:id="flagTableFiveConfigDeviceData" promptText="ALD Reuse Flag" GridPane.columnIndex="1" GridPane.rowIndex="18" />
+                        <TextField fx:id="ruspecTableFiveConfigDeviceData" promptText="RU Specification" GridPane.columnIndex="1" GridPane.rowIndex="19" />
+                        <TextField fx:id="paeffswitchTableFiveConfigDeviceData" promptText="PA Efficiency Improvement Switch" GridPane.columnIndex="1" GridPane.rowIndex="20" />
+                        <TextField fx:id="almprocthrhldTableFiveConfigDeviceData" promptText="VSWR alarm post-processing threshold" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+                        <Label text="VSWR alarm post-processing threshold" GridPane.rowIndex="13" />
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

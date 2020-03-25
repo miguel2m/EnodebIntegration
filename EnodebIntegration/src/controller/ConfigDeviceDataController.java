@@ -5,6 +5,8 @@
  */
 package controller;
 
+import controller.form.configdevicedata.TableFiveDeviceDataController;
+import model.configdevicedata.TableFiveDeviceData;
 import controller.form.configdevicedata.TableFourDeviceDataController;
 import controller.form.configdevicedata.TableOneDeviceDataController;
 import controller.form.configdevicedata.TableThreeDeviceDataController;
@@ -39,6 +41,7 @@ public class ConfigDeviceDataController extends BaseController implements Initia
     private ObservableList<TableTwoDeviceData> _tableTwoDeviceData = FXCollections.observableArrayList();
     private ObservableList<TableThreeDeviceData> _tableThreeDeviceData = FXCollections.observableArrayList();
     private ObservableList<TableFourDeviceData> _tableFourDeviceData = FXCollections.observableArrayList();
+    private ObservableList<TableFiveDeviceData> _tableFiveDeviceData = FXCollections.observableArrayList();
     
     @FXML
     private TableView tableOneDeviceData;
@@ -64,16 +67,24 @@ public class ConfigDeviceDataController extends BaseController implements Initia
     @FXML
     private TextArea mmlPreviewTableFourDeviceData;
     
+    @FXML
+    private TableView tableFiveDeviceData;
+
+    @FXML
+    private TextArea mmlPreviewTableFiveDeviceData;
+    
     public ConfigDeviceDataController(ViewFactory viewFactory, String fxmlName,
             ObservableList<TableOneDeviceData> _tableOneDeviceData,
             ObservableList<TableTwoDeviceData> _tableTwoDeviceData,
             ObservableList<TableThreeDeviceData> _tableThreeDeviceData,
-            ObservableList<TableFourDeviceData> _tableFourDeviceData) {
+            ObservableList<TableFourDeviceData> _tableFourDeviceData,
+            ObservableList<TableFiveDeviceData> _tableFiveDeviceData) {
         super(viewFactory, fxmlName);
         this._tableOneDeviceData=_tableOneDeviceData;
         this._tableTwoDeviceData=_tableTwoDeviceData;
         this._tableThreeDeviceData=_tableThreeDeviceData;
         this._tableFourDeviceData=_tableFourDeviceData;
+        this._tableFiveDeviceData=_tableFiveDeviceData;
     }
     
     @FXML
@@ -482,6 +493,148 @@ public class ConfigDeviceDataController extends BaseController implements Initia
         
     }
     
+    @FXML
+    void onAddTableFiveDeviceData(ActionEvent event) {
+        if (_tableFiveDeviceData.size() <8) {
+            _baseController = new TableFiveDeviceDataController(
+                    viewFactory,
+                    "form/configdevicedata/TableFiveDeviceData.fxml",
+                    tableFiveDeviceData,
+                    mmlPreviewTableFiveDeviceData,
+                    false);
+            viewFactory.showModalStage(
+                    (Stage) tableFiveDeviceData.getScene().getWindow(),
+                    _baseController,
+                    "TABLE 5: //Add RRU/RFU (ADD RRU)");
+        } else {
+            viewFactory.showAlertValidation((Stage) tableFiveDeviceData.getScene().getWindow(),
+                    "TABLE 5: //Add RRU/RFU (ADD RRU)",
+                    "Solo se permite agregar una fila ");
+        }
+    }
+    
+    @FXML
+    void onDeleteTableFiveDeviceData(ActionEvent event) {
+        if (!tableFiveDeviceData.getSelectionModel().isEmpty()) {
+            tableFiveDeviceData.getItems().remove(
+                    tableFiveDeviceData.getSelectionModel().getSelectedItem()
+            );
+            setTextAreaTableFour();
+        } else {
+            viewFactory.showAlertValidation((Stage) tableFiveDeviceData.getScene().getWindow(),
+                    "TABLE 5: //Add RRU/RFU (ADD RRU)",
+                    "Seleccione una fila ");
+        }
+    }
+    
+    @FXML
+    void onDuplicarTableFiveDeviceData(ActionEvent event) {
+        if (!tableFiveDeviceData.getSelectionModel().isEmpty()) {
+            if (_tableFiveDeviceData.size() < 8) {
+
+                TableFiveDeviceData t
+                        = (TableFiveDeviceData) tableFiveDeviceData.getSelectionModel().getSelectedItem();
+                tableFiveDeviceData.getItems().addAll(
+                        new TableFiveDeviceData(
+                                t.getParameterId(),
+                                t.getCn(),
+                                t.getSrn(),
+                                t.getSn(),
+                                t.getTp(),
+                                t.getRnc(),
+                                t.getPs(),
+                                t.getRt(),
+                                t.getRs(),
+                                t.getRn(),
+                                t.getRxnum(),
+                                t.getTxnum(),
+                                t.getAlmprocsw(),
+                                t.getAlmprocthrhld(),
+                                t.getAlmthrhld(),
+                                t.getIfoffset(),
+                                t.getRfds(),
+                                t.getLcpsw(),
+                                t.getFlag(),
+                                t.getRuspec(),
+                                t.getPaeffswitch()
+                        )
+                );
+                setTextAreaTableFive();
+            } else {
+                viewFactory.showAlertValidation((Stage) tableFiveDeviceData.getScene().getWindow(),
+                        "TABLE 5: //Add RRU/RFU (ADD RRU)",
+                        "Solo se permite agregar 8 filas");
+            }
+        } else {
+            viewFactory.showAlertValidation((Stage) tableFiveDeviceData.getScene().getWindow(),
+                    "TABLE 5: //Add RRU/RFU (ADD RRU)",
+                    "Seleccione una fila ");
+        }
+    }
+    
+    @FXML
+    void onUpdateTableFiveDeviceData(ActionEvent event) {
+        if (!tableFiveDeviceData.getSelectionModel().isEmpty()) {
+            _baseController = new TableFiveDeviceDataController(
+                    viewFactory,
+                    "form/configdevicedata/TableFiveDeviceData.fxml",
+                    tableFiveDeviceData,
+                    mmlPreviewTableFiveDeviceData,
+                    true);
+            viewFactory.showModalStage(
+                    (Stage) tableFiveDeviceData.getScene().getWindow(),
+                    _baseController,
+                   "TABLE 5: //Add RRU/RFU (ADD RRU)");
+        } else {
+            viewFactory.showAlertValidation((Stage) tableFiveDeviceData.getScene().getWindow(),
+                   "TABLE 5: //Add RRU/RFU (ADD RRU)",
+                    "Seleccione una fila ");
+        }
+    }
+    
+    private void setTextAreaTableFive() {
+        mmlPreviewTableFiveDeviceData.clear();
+        tableFiveDeviceData.getItems().forEach((basicData) -> {
+            TableFiveDeviceData t = (TableFiveDeviceData) basicData;
+            if (t.getParameterId().equals("REFERENCE")) {
+                mmlPreviewTableFiveDeviceData.appendText("//\n");
+            }
+            if (t.getParameterId().equals("CREATE")) {
+                mmlPreviewTableFiveDeviceData.appendText(""
+                        + "ADD RRU:CN=" + t.getCn() + ","
+                        + "SRN=" + t.getSrn() + ","
+                        + "SN=" + t.getSn()+ ","
+                        + "TP=" + t.getTp()+ ","      
+                        + "RNC=" + t.getRnc()+ ","
+                        + "PS=" + t.getPs()+ ","
+                        + "RT=" + t.getRt()+ ","
+                        + "RS=" + t.getRs()+ ","
+                        + "RN=" + t.getRn()+ ","
+                        + "RXNUM=" + t.getRxnum()+ ","
+                        + "TXNUM=" + t.getTxnum()+ ","
+                        + "ALMPROCSW=" + t.getAlmprocsw()+ ","
+                        + "ALMPROCTHRHLD=" + t.getAlmprocthrhld()+ ","
+                        + "ALMTHRHLD=" + t.getAlmthrhld()+ ","
+                        + "IFOFFSET=" + t.getIfoffset()+ ","
+                        + "RFDS=" + t.getRfds()+ ","
+                        + "LCPSW=" + t.getLcpsw()+ ","
+                        + "FLAG=" + t.getFlag()+ ","
+                        + "RUSPEC=" + t.getRuspec()+ ","        
+                        + "PAEFFSWITCH=" + t.getPaeffswitch()+ ";\n"
+                );
+
+            }
+
+            if (t.getParameterId().equals("DELETE")) {
+                mmlPreviewTableFiveDeviceData.appendText(""
+                        +"RMV RRU:CN=" + t.getCn()+ ","
+                        +"SRN=" + t.getSrn()+ ","
+                        +"SN=" + t.getSn()+ ";\n"
+                );
+            }
+        });
+        
+    }
     /**
      * Initializes the controller class.
      */
@@ -741,6 +894,158 @@ public class ConfigDeviceDataController extends BaseController implements Initia
                 tpnCol04,
                 crCol04);
         setTextAreaTableFour();
+        
+                //Table Three Basic Data
+        TableColumn parameterIdCol05 = new TableColumn("Parameter Name");
+        parameterIdCol05.setMinWidth(200);
+        parameterIdCol05.setCellValueFactory(
+                new PropertyValueFactory<TableFiveDeviceData, String>("parameterId"));
+        parameterIdCol05.setSortType(TableColumn.SortType.DESCENDING);
+        
+        TableColumn cnCol05 = new TableColumn("Cabinet No.");
+        cnCol05.setMinWidth(200);
+        cnCol05.setCellValueFactory(
+                new PropertyValueFactory<TableFiveDeviceData, String>("cn"));
+        cnCol05.setSortType(TableColumn.SortType.DESCENDING);
+        
+        TableColumn srnCol05 = new TableColumn("Subrack No.");
+        srnCol05.setMinWidth(200);
+        srnCol05.setCellValueFactory(
+                new PropertyValueFactory<TableFiveDeviceData, String>("srn"));
+        srnCol05.setSortType(TableColumn.SortType.DESCENDING);
+        
+        TableColumn snCol05 = new TableColumn("Slot No.");
+        snCol05.setMinWidth(200);
+        snCol05.setCellValueFactory(
+                new PropertyValueFactory<TableFiveDeviceData, String>("sn"));
+        snCol05.setSortType(TableColumn.SortType.DESCENDING);
+        
+        TableColumn tpCol05 = new TableColumn("RRU Topo Position");
+        tpCol05.setMinWidth(200);
+        tpCol05.setCellValueFactory(
+                new PropertyValueFactory<TableFiveDeviceData, String>("tp"));
+        tpCol05.setSortType(TableColumn.SortType.DESCENDING);
+        
+        TableColumn rncCol05 = new TableColumn("RRU Chain No.");
+        rncCol05.setMinWidth(200);
+        rncCol05.setCellValueFactory(
+                new PropertyValueFactory<TableFiveDeviceData, String>("rnc"));
+        rncCol05.setSortType(TableColumn.SortType.DESCENDING);
+        
+        TableColumn psCol05 = new TableColumn("RRU Position");
+        psCol05.setMinWidth(200);
+        psCol05.setCellValueFactory(
+                new PropertyValueFactory<TableFiveDeviceData, String>("ps"));
+        psCol05.setSortType(TableColumn.SortType.DESCENDING);
+        
+        TableColumn rtCol05 = new TableColumn("RRU Type");
+        rtCol05.setMinWidth(200);
+        rtCol05.setCellValueFactory(
+                new PropertyValueFactory<TableFiveDeviceData, String>("rt"));
+        rtCol05.setSortType(TableColumn.SortType.DESCENDING);
+        
+        TableColumn rsCol05 = new TableColumn("RF Unit Working Mode");
+        rsCol05.setMinWidth(200);
+        rsCol05.setCellValueFactory(
+                new PropertyValueFactory<TableFiveDeviceData, String>("rs"));
+        rsCol05.setSortType(TableColumn.SortType.DESCENDING);
+        
+        TableColumn rnCol05 = new TableColumn("RRU Name");
+        rnCol05.setMinWidth(200);
+        rnCol05.setCellValueFactory(
+                new PropertyValueFactory<TableFiveDeviceData, String>("rn"));
+        rnCol05.setSortType(TableColumn.SortType.DESCENDING);
+        
+        TableColumn rxnumCol05 = new TableColumn("Number of Rx channel");
+        rxnumCol05.setMinWidth(200);
+        rxnumCol05.setCellValueFactory(
+                new PropertyValueFactory<TableFiveDeviceData, String>("rxnum"));
+        rxnumCol05.setSortType(TableColumn.SortType.DESCENDING);
+        
+        TableColumn txnumCol05 = new TableColumn("Number of Tx channel");
+        txnumCol05.setMinWidth(200);
+        txnumCol05.setCellValueFactory(
+                new PropertyValueFactory<TableFiveDeviceData, String>("txnum"));
+        txnumCol05.setSortType(TableColumn.SortType.DESCENDING);
+        
+        TableColumn almprocswCol05 = new TableColumn("VSWR alarm post-processing switch");
+        almprocswCol05.setMinWidth(200);
+        almprocswCol05.setCellValueFactory(
+                new PropertyValueFactory<TableFiveDeviceData, String>("almprocsw"));
+        almprocswCol05.setSortType(TableColumn.SortType.DESCENDING);
+        
+        TableColumn almprocthrhldCol05 = new TableColumn("VSWR alarm post-processing threshold");
+        almprocthrhldCol05.setMinWidth(200);
+        almprocthrhldCol05.setCellValueFactory(
+                new PropertyValueFactory<TableFiveDeviceData, String>("almprocthrhld"));
+        almprocthrhldCol05.setSortType(TableColumn.SortType.DESCENDING);
+        
+        TableColumn almthrhldCol05 = new TableColumn("VSWR alarm threshold");
+        almthrhldCol05.setMinWidth(200);
+        almthrhldCol05.setCellValueFactory(
+                new PropertyValueFactory<TableFiveDeviceData, String>("almthrhld"));
+        almthrhldCol05.setSortType(TableColumn.SortType.DESCENDING);
+        
+        TableColumn ifoffsetCol05 = new TableColumn("IfOffset");
+        ifoffsetCol05.setMinWidth(200);
+        ifoffsetCol05.setCellValueFactory(
+                new PropertyValueFactory<TableFiveDeviceData, String>("ifoffset"));
+        ifoffsetCol05.setSortType(TableColumn.SortType.DESCENDING);
+        
+        TableColumn rfdsCol05 = new TableColumn("RF Desensitivity");
+        rfdsCol05.setMinWidth(200);
+        rfdsCol05.setCellValueFactory(
+                new PropertyValueFactory<TableFiveDeviceData, String>("rfds"));
+        rfdsCol05.setSortType(TableColumn.SortType.DESCENDING);
+        
+        TableColumn lcpswCol05 = new TableColumn("Low Current Protect Switch");
+        lcpswCol05.setMinWidth(200);
+        lcpswCol05.setCellValueFactory(
+                new PropertyValueFactory<TableFiveDeviceData, String>("lcpsw"));
+        lcpswCol05.setSortType(TableColumn.SortType.DESCENDING);
+        
+        TableColumn flagCol05 = new TableColumn("ALD Reuse Flag");
+        flagCol05.setMinWidth(200);
+        flagCol05.setCellValueFactory(
+                new PropertyValueFactory<TableFiveDeviceData, String>("flag"));
+        flagCol05.setSortType(TableColumn.SortType.DESCENDING);
+        
+        TableColumn ruspecCol05 = new TableColumn("RU Specification");
+        ruspecCol05.setMinWidth(200);
+        ruspecCol05.setCellValueFactory(
+                new PropertyValueFactory<TableFiveDeviceData, String>("ruspec"));
+        ruspecCol05.setSortType(TableColumn.SortType.DESCENDING);
+        
+        TableColumn paeffswitchCol05 = new TableColumn("PA Efficiency Improvement Switch");
+        paeffswitchCol05.setMinWidth(200);
+        paeffswitchCol05.setCellValueFactory(
+                new PropertyValueFactory<TableFiveDeviceData, String>("paeffswitch"));
+        paeffswitchCol05.setSortType(TableColumn.SortType.DESCENDING);
+        
+        tableFiveDeviceData.setItems(_tableFiveDeviceData);
+        tableFiveDeviceData.getColumns().addAll(parameterIdCol05,
+                cnCol05,
+                srnCol05,
+                snCol05,
+                tpCol05,
+                rncCol05,
+                psCol05,
+                rtCol05,
+                rsCol05,
+                rnCol05,
+                rxnumCol05,
+                txnumCol05,
+                almprocswCol05,
+                almprocthrhldCol05,
+                almthrhldCol05,
+                ifoffsetCol05,
+                rfdsCol05,
+                lcpswCol05,
+                flagCol05,
+                ruspecCol05,
+                paeffswitchCol05);
+        setTextAreaTableFive();
+        
     }    
     
 }
