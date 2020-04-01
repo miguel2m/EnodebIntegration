@@ -181,6 +181,38 @@
                      </children>
                   </VBox>
                   <Separator prefWidth="200.0" />
+                  <VBox alignment="TOP_CENTER" spacing="5.0">
+                     <children>
+                        <Label text="//Time data" textFill="#00ab1f" />
+                        <Label text="//Set Time Zone and DST Parameter (SET TZ)" textFill="#00ab1f" />
+                        <HBox spacing="10.0">
+                           <children>
+                              <MenuButton minWidth="-Infinity" mnemonicParsing="false" prefWidth="103.0" text="Opciones">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" onAction="#onAddTableSixDeviceData" text="Agregar" />
+                                    <MenuItem mnemonicParsing="false" onAction="#onUpdateTableSixDeviceData" text="Actualizar" />
+                                    <MenuItem mnemonicParsing="false" onAction="#onDeleteTableSixDeviceData" text="Eliminar" />
+                                 </items>
+                              </MenuButton>
+                              <ScrollPane fitToHeight="true" minHeight="-Infinity" prefHeight="90.0" HBox.hgrow="ALWAYS">
+                                 <content>
+                                    <AnchorPane>
+                                       <children>
+                                          <TableView fx:id="tableSixDeviceData" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <Label text="MML comand //Set Time Zone and DST Parameter (SET TZ)" />
+                        <TextArea fx:id="mmlPreviewTableSixDeviceData" editable="false" prefHeight="90.0" />
+                     </children>
+                  </VBox>
+                  <Separator prefWidth="200.0" />
                </children>
             </VBox>
          </children>
